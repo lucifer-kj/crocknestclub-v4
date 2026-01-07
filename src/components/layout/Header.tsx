@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { CartButton } from "@/components/cart/CartButton";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { User } from 'lucide-react';
+import { SearchInput } from './SearchInput';
 
 export function Header() {
     return (
@@ -19,6 +21,11 @@ export function Header() {
                         <Link href="/shop?category=digital" className="transition-colors hover:text-primary hover:underline decoration-2 underline-offset-4">Digital</Link>
                     </nav>
                     <div className="ml-auto flex items-center space-x-4">
+                        <div className="hidden md:block">
+                            <Suspense fallback={<div className="w-[200px]" />}>
+                                <SearchInput />
+                            </Suspense>
+                        </div>
                         <Button variant="ghost" size="icon" asChild className="hover:text-primary hover:bg-transparent">
                             <Link href="/account">
                                 <User className="h-6 w-6 stroke-[2px]" />

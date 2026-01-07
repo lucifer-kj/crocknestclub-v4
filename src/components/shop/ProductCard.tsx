@@ -6,19 +6,18 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useCartStore } from "@/store/cart"
 import { ShoppingBag, Plus } from "lucide-react"
-
-// Use console log if toast not found or check package.json for sonner. package.json didn't list sonner but radix-ui/react-toast might be there. 
-// I'll skip toast for this step and just animate the button.
+import { WishlistButton } from "@/components/wishlist/WishlistButton"
 
 interface ProductCardProps {
     id: string
     title: string
-    price: number | string // Handle both
+    price: number | string
     scarcityLevel: string
     image: string
+    isWishlisted?: boolean
 }
 
-export function ProductCard({ id, title, price, scarcityLevel, image }: ProductCardProps) {
+export function ProductCard({ id, title, price, scarcityLevel, image, isWishlisted = false }: ProductCardProps) {
     const { addItem, openCart } = useCartStore()
 
     // Parse price if string
@@ -55,6 +54,10 @@ export function ProductCard({ id, title, price, scarcityLevel, image }: ProductC
                                 e.currentTarget.src = `https://placehold.co/600x600/000000/FFFFFF/png?text=${encodeURIComponent(title)}`
                             }}
                         />
+
+                        <div className="absolute top-2 right-2 z-10">
+                            <WishlistButton productId={id} initialIsWishlisted={isWishlisted} className="bg-background/80 backdrop-blur border-2 border-black hover:bg-background shadow-sm" />
+                        </div>
 
                         {scarcityLevel === "HIGH" && (
                             <Badge className="absolute top-2 right-2 bg-secondary text-secondary-foreground border-2 border-black rounded-none">

@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { ProductGallery } from "@/components/shop/ProductGallery"
 import { ProductInfo } from "@/components/shop/ProductInfo"
 import { notFound } from "next/navigation"
+import { ViewTracker } from "@/components/product/ViewTracker"
 
 export const dynamic = 'force-dynamic'
 
@@ -29,6 +30,7 @@ export default async function ProductPage({ params }: PageProps) {
 
     return (
         <div className="min-h-screen py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto">
+            <ViewTracker productId={product.id} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
                 <ProductGallery images={product.images} title={product.title} />
                 <ProductInfo
