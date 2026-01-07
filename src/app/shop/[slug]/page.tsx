@@ -31,7 +31,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
     const mapProductForTracker = {
         id: product.id,
         title: product.title,
-        price: `$${product.basePrice.toString()}`,
+        price: `₹${product.basePrice.toString()}`,
         image: product.images[0] || "",
         category: product.category?.name
     };
@@ -52,7 +52,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
                 <ProductGallery images={product.images} />
                 <ProductInfo
                     title={product.title}
-                    price={`$${product.basePrice.toString()}`}
+                    price={`₹${product.basePrice.toString()}`}
                     oldPrice={undefined} // Schema doesn't have oldPrice yet
                     description={product.description}
                 />

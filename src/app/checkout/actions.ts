@@ -13,26 +13,54 @@ interface ShippingInfo {
     email: string
 }
 
-export async function createOrder(items: CartItem[], total: number, shippingInfo: ShippingInfo) {
+export async function createOrder(items: CartItem[], _clientTotal: number, shippingInfo: ShippingInfo) {
     if (!items || items.length === 0) {
         throw new Error("Cart is empty")
     }
 
     try {
+        // Server-Side Price Calculation (Security Fix)
+        let calculatedTotal = 0
+        const secureItems = []
+
+        for (const item of items) {
+            const variant = await prisma.variant.findUnique({
+                where: { id: item.variantId },
+                include: { product: true }
+            })
+
+            if (!variant) {
+                throw new Error(`Product variant not found: ${item.title}`)
+            }
+
+            // Verify stock (Optional P0 addition: Check stock)
+            if (variant.stock < item.quantity) {
+                throw new Error(`Insufficient stock for ${variant.product.title} (${variant.size}/${variant.color})`)
+            }
+
+            const price = Number(variant.product.basePrice)
+            calculatedTotal += price * item.quantity
+
+            secureItems.push({
+                productSnapshot: {
+                    title: variant.product.title,
+                    price: price,
+                    image: variant.product.images[0] || ""
+                },
+                variantSku: variant.sku,
+                quantity: item.quantity,
+                priceAtPurchase: price
+            })
+        }
+
         const order = await prisma.order.create({
             data: {
-                total: total,
+                total: calculatedTotal,
                 status: "PENDING",
-                user: undefined, // Guest checkout for now (or linked if I handled auth in passed params)
-                shippingInfo: shippingInfo as any, // Json type
-                // Also create Address in DB to be clean? For now just storing in JSON to allow Guest.
+                user: undefined, // Guest checkout
+                shippingInfo: shippingInfo as any,
                 items: {
-                    create: items.map(item => ({
-                        productSnapshot: { title: item.title, price: item.price, image: item.image },
-                        variantSku: item.variantId,
-                        quantity: item.quantity,
-                        priceAtPurchase: item.price
-                    }))
+                    create: secureItems
                 }
             }
         })
@@ -40,27 +68,23 @@ export async function createOrder(items: CartItem[], total: number, shippingInfo
         // Instamojo Integration
         const API_KEY = process.env.INSTAMOJO_API_KEY
         const AUTH_TOKEN = process.env.INSTAMOJO_AUTH_TOKEN
-        // const AUTH_TOKEN = process.env.INSTAMOJO_SALT // Sometimes called Salt in older docs, but v1.1 calls it Auth Token? 
-        // User said "salt and api". 
-        // Standard header is X-Auth-Token: <Auth_Token>
-
         const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
         if (API_KEY && AUTH_TOKEN) {
-            console.log("Initiating Instamojo Payment...")
+            console.log("Initiating Instamojo Payment (INR)...")
             const payload = new URLSearchParams()
-            payload.append("purpose", `Ordering #${order.id.substring(0, 8)}`)
-            payload.append("amount", total.toFixed(2))
+            payload.append("purpose", `Order #${order.id.substring(0, 8)}`)
+            payload.append("amount", calculatedTotal.toFixed(2))
             payload.append("buyer_name", shippingInfo.name)
             payload.append("email", shippingInfo.email)
-            payload.append("phone", "9999999999") // Placeholder phone if strictly required. Instamojo often requires phone.
+            payload.append("phone", "9999999999")
             payload.append("redirect_url", `${BASE_URL}/checkout/success?orderId=${order.id}`)
             payload.append("send_email", "True")
-            payload.append("webhook", `${BASE_URL}/api/webhook/instamojo`) // Optional
+            payload.append("webhook", `${BASE_URL}/api/webhook/instamojo`)
             payload.append("allow_repeated_payments", "False")
 
-            // Use Prod URL ? User didn't specify Sandbox. Default to Prod for real "Integration".
-            // But if keys are invalid it will fail.
+            // Note: Instamojo currency defaults to INR.
+
             const response = await fetch("https://www.instamojo.com/api/1.1/payment-requests/", {
                 method: "POST",
                 headers: {
@@ -75,7 +99,6 @@ export async function createOrder(items: CartItem[], total: number, shippingInfo
 
             if (data.success) {
                 const longUrl = data.payment_request.longurl
-                // Update order with payment ID if available
                 await prisma.order.update({
                     where: { id: order.id },
                     data: {
@@ -89,11 +112,9 @@ export async function createOrder(items: CartItem[], total: number, shippingInfo
                 throw new Error(JSON.stringify(data.message) || "Payment initiation failed")
             }
         } else {
-            console.warn("Instamojo Keys missing. Simulating success.")
-            // Simulate payment processing
-            // In real app, redirect to payment gateway here.
+            console.warn("Instamojo Keys missing. Simulating success (Dev Mode).")
 
-            // Mark as paid for simulation
+            // In dev mode, we auto-confirm
             await prisma.order.update({
                 where: { id: order.id },
                 data: { status: "PAID" }

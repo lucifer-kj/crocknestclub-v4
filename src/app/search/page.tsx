@@ -64,7 +64,7 @@ export default async function SearchPage({
                             id={product.id}
                             title={product.title}
                             category={product.category?.name || "Uncategorized"}
-                            price={`$${product.basePrice.toString()}`}
+                            price={`₹${product.basePrice.toString()}`}
                             image={product.images[0] || ""}
                         />
                     ))}

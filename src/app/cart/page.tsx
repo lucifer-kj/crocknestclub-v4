@@ -18,7 +18,7 @@ export default function CartPage() {
                                         <h3 className="font-bold text-lg text-black dark:text-white">Neon Cyber Tee</h3>
                                         <p className="text-gray-500">Size: M / Color: Black</p>
                                     </div>
-                                    <p className="font-bold text-lg text-black dark:text-white">$35.00</p>
+                                    <p className="font-bold text-lg text-black dark:text-white">₹3500.00</p>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg">
@@ -41,7 +41,7 @@ export default function CartPage() {
                                         <h3 className="font-bold text-lg text-black dark:text-white">Tech Utility Cargo</h3>
                                         <p className="text-gray-500">Size: 32 / Color: Charcoal</p>
                                     </div>
-                                    <p className="font-bold text-lg text-black dark:text-white">$60.00</p>
+                                    <p className="font-bold text-lg text-black dark:text-white">₹6000.00</p>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg">
@@ -60,7 +60,7 @@ export default function CartPage() {
                         <div className="space-y-4 mb-6">
                             <div className="flex justify-between text-black dark:text-white">
                                 <span>Subtotal</span>
-                                <span className="font-bold">$95.00</span>
+                                <span className="font-bold">₹9500.00</span>
                             </div>
                             <div className="flex justify-between text-gray-500">
                                 <span>Shipping</span>
@@ -70,7 +70,7 @@ export default function CartPage() {
                         <div className="border-t border-gray-200 dark:border-white/10 pt-4 mb-8">
                             <div className="flex justify-between text-lg font-black text-black dark:text-white">
                                 <span>Total</span>
-                                <span>$95.00</span>
+                                <span>₹9500.00</span>
                             </div>
                         </div>
                         <Link href="/checkout" className="w-full block text-center bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary-dark transition-colors shadow-lg hover:shadow-primary/30">
