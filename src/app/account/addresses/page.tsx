@@ -1,18 +1,8 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-
-export default function AddressPage() {
+export default function AddressesPage() {
     return (
-        <div className="text-center py-10 space-y-4">
-            <h1 className="text-2xl font-black uppercase">Address Book</h1>
-            <p className="text-muted-foreground">Manage your shipping addresses here.</p>
-            <div className="bg-muted p-4 border-2 border-black inline-block">
-                <p>Feature coming in next update.</p>
-            </div>
-            <br />
-            <Button className="rounded-none border-2 border-black" asChild>
-                <Link href="/account">Back to Dashboard</Link>
-            </Button>
+        <div className="space-y-6">
+            <h1 className="text-3xl font-black tracking-tight text-black dark:text-white">Addresses</h1>
+            <p className="text-gray-500">Manage your shipping addresses here.</p>
         </div>
-    )
+    );
 }

@@ -34,6 +34,10 @@ const COLLECTIONS = [
     }
 ];
 
+const getSlug = (title: string) => {
+    return title.toLowerCase().replace(/\s+/g, '-');
+};
+
 export default function CollectionsPage() {
     return (
         <div className="flex flex-col min-h-screen">
@@ -46,7 +50,7 @@ export default function CollectionsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {COLLECTIONS.map((col, idx) => (
                         <Link
-                            href="/shop"
+                            href={`/collections/${getSlug(col.title)}`}
                             key={idx}
                             className={`group relative overflow-hidden rounded-2xl block ${col.size === 'large' ? 'md:col-span-2 aspect-[21/9]' : 'col-span-1 aspect-[4/3]'} bg-gray-100 dark:bg-gray-800`}
                         >

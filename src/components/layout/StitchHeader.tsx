@@ -1,5 +1,34 @@
+"use client";
+
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState, Suspense } from "react";
+
+function SearchInput() {
+    const router = useRouter();
+    const [query, setQuery] = useState("");
+
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (query.trim()) {
+            router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSearch} className="hidden md:flex w-full max-w-[240px] items-center rounded-full bg-gray-100 dark:bg-white/5 px-4 py-2 border border-primary/30 transition-all focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
+            <span className="material-symbols-outlined text-gray-400 dark:text-gray-400 text-[20px]">search</span>
+            <input
+                className="w-full bg-transparent border-none text-sm p-0 pl-2 text-text-main dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-0 outline-none"
+                placeholder="Search drops..."
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+            />
+        </form>
+    );
+}
 
 export function StitchHeader() {
     return (
@@ -22,14 +51,9 @@ export function StitchHeader() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <div className="hidden md:flex w-full max-w-[240px] items-center rounded-full bg-gray-100 dark:bg-white/5 px-4 py-2 border border-primary/30 transition-all focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
-                        <span className="material-symbols-outlined text-gray-400 dark:text-gray-400 text-[20px]">search</span>
-                        <input
-                            className="w-full bg-transparent border-none text-sm p-0 pl-2 text-text-main dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-0 outline-none"
-                            placeholder="Search drops..."
-                            type="text"
-                        />
-                    </div>
+                    <Suspense fallback={<div className="w-[240px]" />}>
+                        <SearchInput />
+                    </Suspense>
 
                     <div className="flex gap-2">
                         <button className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors md:hidden">

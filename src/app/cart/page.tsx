@@ -1,12 +1,8 @@
 import Link from 'next/link';
-import { StitchHeader } from "@/components/layout/StitchHeader";
-import { StitchFooter } from "@/components/layout/StitchFooter";
 
 export default function CartPage() {
     return (
         <div className="min-h-screen flex flex-col bg-white dark:bg-background-dark">
-            <StitchHeader />
-
             <main className="flex-1 max-w-[1440px] mx-auto w-full px-4 md:px-8 py-12">
                 <h1 className="text-4xl font-black mb-8 text-black dark:text-white">YOUR CART (2)</h1>
 
@@ -83,8 +79,6 @@ export default function CartPage() {
                     </div>
                 </div>
             </main>
-
-            <StitchFooter />
         </div>
     );
 }

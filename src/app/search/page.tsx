@@ -1,49 +1,30 @@
 import Link from 'next/link';
 import { SearchFiltersBar } from "@/components/search/SearchFiltersBar";
 import { StitchProductCard } from "@/components/shop/StitchProductCard";
+import { prisma } from "@/lib/prisma";
 
-// Mock Data for Search
-const SEARCH_RESULTS = [
-    {
-        id: "s1",
-        title: "Cyber-Y2K Graphic Hoodie",
-        category: "Oversized Fit",
-        price: "$45.00",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgFJXAq4S54jHuOXmvrnlz0tacu9rtNeo5k3XKKHns8m4fc3GesocqlzJdFe0gG3cb19H8ETkDCN4HO9tgZ14bKUJxtIWD9dKJvYu7Y56_QWv7XVvKdahKDE7B7-KCc_jPxj_U8XijAEVDeixJf8mSXId0JT2L0dqmxDS6oJ8rOcnOpj9BaaNzM6DS8M9qudnfrYNUKL48OXBwogmeethPdlekpmOD-TuiOl1KCVmM4z7jBOWBzpfeqGhpqL96MXpOP5XBXmWxOac",
-        tags: [],
-        colors: ["#000", "#2563eb"]
-    },
-    {
-        id: "s2",
-        title: "Acid Wash Vintage Tee",
-        category: "100% Cotton",
-        price: "$28.00",
-        oldPrice: "$35.00",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGGEjW-hoK361bgvkoG8kt8cM1SZHeLwWnJHS8_vfAO8kqUkuRKcHOkl_fgK4GzfF2MtD3BTPGgLMbtzRMRPEjricLEXkwMZpPUBHiclk-hETEZ6c_W_vq3tMbdQT2htJfdu69v1XMUZ2qEuMqlwe5T4JhUHXduVYt5BMys0aMcGHDUcpWAs8qOrQe82Mm1ZDgnKyA3kOb_bgcPFG_jx0jJF8WEy7qSmHuzby-uxdPkqTeWpUWFURoCFXKvcywGfziVTcU0Ie71xQ",
-        tags: ["Sale"],
-        colors: []
-    },
-    {
-        id: "s3",
-        title: "Electric Blue Joggers",
-        category: "Unisex",
-        price: "$35.00",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBtuZv5Afzn7YcVLWVtH5vKJlptQbBa0ixdYq9StdgkyomhpnwAGvSEPOZqBfDi25iZ_cBCtFZXl6i6Mj5j1Sw7g3yRqyvNmL-AVhgmY0oNYoc-BSGuMafnppt2fNZ7b12Axwn-Pl09quW2eKPmCS43XmH46ruYQF5d9IvH-_EjSqQEJzqypC5oNSIqBXMOdUtaoyk6KdsQWZNIwto_wn1hSljH7Nki12JUIZ0p3qzt7_BLoZBIgsy96Wa0l9Tg8w75_OMyHoX3ncI",
-        tags: [],
-        colors: ["#2563eb"]
-    },
-    {
-        id: "s4",
-        title: "Distressed Denim Jacket",
-        category: "Outerwear",
-        price: "$55.00",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBiMXtoJvPnrpwO_7iIYb_NBWr4doqi0iiQFSDcXMnqYc4zig84iEtHyHRQ6nefn_d4xtP9ZBi3KiT8QiQS8YabBoYz9SRa1_C_iIAgCdptY1Qvr3SyopadJSY1SJLhmjH11dBD-K5rX1KkYbuWNm0hkN5x5gX8Ob57t4ulyidLbgyCwCmQJcMjO5XclYSv8LaHKu3uycDiAMuJSLFuoLVj2_aLqvPd0aewbS07LFs1MK9vWVqmtP_cpEo86fTFN1yIsZHDNsLY8aE",
-        tags: ["New"],
-        colors: []
-    }
-];
+export const dynamic = 'force-dynamic';
 
-export default function SearchPage() {
+export default async function SearchPage({
+    searchParams
+}: {
+    searchParams: { q?: string }
+}) {
+    const query = searchParams.q || "";
+
+    const products = query ? await prisma.product.findMany({
+        where: {
+            OR: [
+                { title: { contains: query, mode: 'insensitive' } },
+                { description: { contains: query, mode: 'insensitive' } },
+            ]
+        },
+        include: {
+            category: true,
+            variants: true
+        }
+    }) : [];
+
     return (
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
             <nav aria-label="Breadcrumb" className="flex mb-6 text-sm font-medium text-gray-500">
@@ -57,9 +38,13 @@ export default function SearchPage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-black dark:text-white mb-2">
-                        Results for '<span className="text-primary decoration-4 decoration-primary/20 underline-offset-4">Cyber-Y2K</span>'
+                        {query ? (
+                            <>Results for '<span className="text-primary decoration-4 decoration-primary/20 underline-offset-4">{query}</span>'</>
+                        ) : (
+                            <>Search our store</>
+                        )}
                     </h1>
-                    <p className="text-gray-500 font-medium">Showing {SEARCH_RESULTS.length} products</p>
+                    <p className="text-gray-500 font-medium">Showing {products.length} products</p>
                 </div>
                 <div className="hidden md:block relative">
                     <button className="flex items-center justify-between w-48 px-4 py-2 bg-white dark:bg-white/5 border border-primary/30 rounded-lg hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-black dark:text-white">
@@ -71,17 +56,26 @@ export default function SearchPage() {
 
             <SearchFiltersBar />
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12 mb-16">
-                {SEARCH_RESULTS.map(product => (
-                    <StitchProductCard key={product.id} {...product} />
-                ))}
-            </div>
+            {products.length > 0 ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12 mb-16">
+                    {products.map(product => (
+                        <StitchProductCard
+                            key={product.id}
+                            id={product.id}
+                            title={product.title}
+                            category={product.category?.name || "Uncategorized"}
+                            price={`$${product.basePrice.toString()}`}
+                            image={product.images[0] || ""}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="text-center py-20">
+                    <p className="text-2xl font-bold text-gray-400">No products found matching your search.</p>
+                </div>
+            )}
 
-            <div className="mt-16 flex justify-center mb-24">
-                <button className="bg-gradient-to-r from-black to-[#1a1a1a] dark:from-white dark:to-gray-200 hover:from-primary hover:to-primary-dark dark:hover:from-primary dark:hover:to-primary text-white dark:text-black hover:text-white font-bold py-4 px-12 rounded-lg transition-all shadow-lg hover:shadow-glow transform hover:-translate-y-1">
-                    Load More Products
-                </button>
-            </div>
+            {/* Pagination / Load More could go here */}
 
             <div className="mt-24 pt-12 border-t border-gray-100 dark:border-white/10">
                 <div className="flex flex-col items-center text-center mb-10 max-w-2xl mx-auto">
