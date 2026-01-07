@@ -34,11 +34,14 @@ export default function CheckoutPage() {
 
         const result = await createOrder(items, total, shippingInfo)
 
-        if (result.success) {
+        if (result.success && result.redirectUrl) {
+            router.push(result.redirectUrl)
+        } else if (result.success && result.orderId) {
+            // Fallback for simulation
             clearCart()
             router.push(`/checkout/success?orderId=${result.orderId}`)
         } else {
-            alert("Checkout failed. Please try again.")
+            alert(`Checkout failed: ${result.error || "Unknown error"}`)
         }
         setIsLoading(false)
     }
@@ -46,9 +49,9 @@ export default function CheckoutPage() {
     if (items.length === 0) {
         return (
             <div className="min-h-screen flex items-center justify-center p-4">
-                <div className="text-center">
-                    <h1 className="text-2xl font-bold mb-4">Your Stash is Empty</h1>
-                    <Button onClick={() => router.push("/shop")}>Go to Shop</Button>
+                <div className="text-center space-y-4">
+                    <h1 className="text-4xl font-black uppercase tracking-tighter">Your Stash is Empty</h1>
+                    <Button onClick={() => router.push("/shop")} size="lg" className="rounded-none border-2 border-black font-bold uppercase tracking-widest">Go to Shop</Button>
                 </div>
             </div>
         )
@@ -56,42 +59,42 @@ export default function CheckoutPage() {
 
     return (
         <div className="min-h-screen py-10 px-4 md:px-8 max-w-6xl mx-auto">
-            <h1 className="text-4xl font-black uppercase tracking-tighter mb-8 text-center md:text-left">Checkout</h1>
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12 text-center md:text-left border-b-2 border-black pb-8">Checkout</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {/* Shipping Form */}
                 <div>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Shipping Details</CardTitle>
+                    <Card className="rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <CardHeader className="border-b-2 border-black bg-muted/20">
+                            <CardTitle className="uppercase font-black tracking-wide text-xl">Shipping Details</CardTitle>
                         </CardHeader>
-                        <CardContent>
-                            <form id="checkout-form" onSubmit={handleSubmit} className="space-y-4">
+                        <CardContent className="p-6">
+                            <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-2">
-                                    <Label htmlFor="name">Full Name</Label>
-                                    <Input id="name" name="name" required placeholder="John Doe" />
+                                    <Label htmlFor="name" className="uppercase font-bold text-xs tracking-widest">Full Name</Label>
+                                    <Input id="name" name="name" required placeholder="John Doe" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="email">Email</Label>
-                                    <Input id="email" name="email" type="email" required placeholder="john@example.com" />
+                                    <Label htmlFor="email" className="uppercase font-bold text-xs tracking-widest">Email</Label>
+                                    <Input id="email" name="email" type="email" required placeholder="john@example.com" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="address">Address</Label>
-                                    <Input id="address" name="address" required placeholder="123 Street Name" />
+                                    <Label htmlFor="address" className="uppercase font-bold text-xs tracking-widest">Address</Label>
+                                    <Input id="address" name="address" required placeholder="123 Street Name" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <Label htmlFor="city">City</Label>
-                                        <Input id="city" name="city" required placeholder="New York" />
+                                        <Label htmlFor="city" className="uppercase font-bold text-xs tracking-widest">City</Label>
+                                        <Input id="city" name="city" required placeholder="New York" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="zip">ZIP Code</Label>
-                                        <Input id="zip" name="zip" required placeholder="10001" />
+                                        <Label htmlFor="zip" className="uppercase font-bold text-xs tracking-widest">ZIP Code</Label>
+                                        <Input id="zip" name="zip" required placeholder="10001" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="country">Country</Label>
-                                    <Input id="country" name="country" required placeholder="United States" />
+                                    <Label htmlFor="country" className="uppercase font-bold text-xs tracking-widest">Country</Label>
+                                    <Input id="country" name="country" required placeholder="United States" className="rounded-none border-2 border-black h-12 bg-transparent focus-visible:ring-0 focus-visible:border-primary" />
                                 </div>
                             </form>
                         </CardContent>
@@ -100,55 +103,61 @@ export default function CheckoutPage() {
 
                 {/* Order Summary */}
                 <div>
-                    <Card className="sticky top-24">
-                        <CardHeader>
-                            <CardTitle>Order Summary</CardTitle>
+                    <Card className="sticky top-24 rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-card">
+                        <CardHeader className="border-b-2 border-black bg-muted/20">
+                            <CardTitle className="uppercase font-black tracking-wide text-xl">Order Summary</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-4">
-                            <ul className="divide-y max-h-[300px] overflow-y-auto">
+                        <CardContent className="space-y-4 p-6">
+                            <ul className="divide-y divide-black/10 max-h-[400px] overflow-y-auto">
                                 {items.map((item) => (
-                                    <li key={item.variantId} className="flex justify-between py-3">
-                                        <div className="flex gap-3">
-                                            <div className="h-12 w-12 bg-muted rounded overflow-hidden">
+                                    <li key={item.variantId} className="flex justify-between py-4">
+                                        <div className="flex gap-4">
+                                            <div className="h-16 w-16 bg-muted border-2 border-black overflow-hidden flex-shrink-0">
                                                 <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
                                             </div>
                                             <div>
-                                                <p className="font-medium text-sm">{item.title}</p>
-                                                <p className="text-xs text-muted-foreground">{item.size} x {item.quantity}</p>
+                                                <p className="font-bold text-sm uppercase tracking-tight line-clamp-2">{item.title}</p>
+                                                <p className="text-xs font-mono mt-1">{item.size} x {item.quantity}</p>
                                             </div>
                                         </div>
-                                        <p className="font-medium text-sm">${(item.price * item.quantity).toFixed(2)}</p>
+                                        <p className="font-mono font-bold">${(item.price * item.quantity).toFixed(2)}</p>
                                     </li>
                                 ))}
                             </ul>
 
-                            <div className="border-t pt-4 space-y-2">
-                                <div className="flex justify-between text-sm">
+                            <div className="border-t-2 border-black pt-4 space-y-2">
+                                <div className="flex justify-between text-sm font-medium uppercase tracking-wide">
                                     <span>Subtotal</span>
-                                    <span>${subtotal.toFixed(2)}</span>
+                                    <span className="font-mono">${subtotal.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-sm">
+                                <div className="flex justify-between text-sm font-medium uppercase tracking-wide">
                                     <span>Shipping</span>
-                                    <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                                    <span className="font-mono">{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
                                 </div>
-                                <div className="flex justify-between font-bold text-lg pt-2 border-t mt-2">
+                                <div className="flex justify-between font-black text-xl pt-4 border-t-2 border-black mt-4 uppercase">
                                     <span>Total</span>
-                                    <span>${total.toFixed(2)}</span>
+                                    <span className="font-mono">${total.toFixed(2)}</span>
                                 </div>
                             </div>
                         </CardContent>
-                        <CardFooter>
+                        <CardFooter className="p-6 pt-0">
                             <Button
-                                className="w-full h-12 text-lg font-bold uppercase"
+                                className="w-full h-14 text-xl font-black uppercase tracking-widest rounded-none border-2 border-transparent hover:border-black hover:bg-white hover:text-black transition-all shadow-none hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                                 type="submit"
+                                size="lg"
                                 form="checkout-form"
                                 disabled={isLoading}
                             >
-                                {isLoading ? "Processing..." : "Place Order"}
+                                {isLoading ? "Processing..." : "Pay with Instamojo"}
                             </Button>
                         </CardFooter>
                     </Card>
                 </div>
+            </div>
+
+            <div className="mt-12 flex justify-center opacity-50 grayscale hover:grayscale-0 transition-all">
+                {/* Trust Badges / Footer Info */}
+                <p className="text-xs font-mono uppercase">Secured by Instamojo</p>
             </div>
         </div>
     )

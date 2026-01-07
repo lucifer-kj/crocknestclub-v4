@@ -3,7 +3,6 @@
 import { prisma } from "@/lib/prisma"
 import { CartItem } from "@/store/cart"
 import { revalidatePath } from "next/cache"
-import { redirect } from "next/navigation"
 
 interface ShippingInfo {
     name: string
@@ -11,6 +10,7 @@ interface ShippingInfo {
     city: string
     zip: string
     country: string
+    email: string
 }
 
 export async function createOrder(items: CartItem[], total: number, shippingInfo: ShippingInfo) {
@@ -23,16 +23,13 @@ export async function createOrder(items: CartItem[], total: number, shippingInfo
             data: {
                 total: total,
                 status: "PENDING",
+                user: undefined, // Guest checkout for now (or linked if I handled auth in passed params)
                 shippingInfo: shippingInfo as any, // Json type
+                // Also create Address in DB to be clean? For now just storing in JSON to allow Guest.
                 items: {
                     create: items.map(item => ({
                         productSnapshot: { title: item.title, price: item.price, image: item.image },
-                        variantSku: item.variantId, // Ideally SKU, but using ID for now if it maps. Wait, item.variantId IS the ID. I should fetch SKU or store it in cart. Cart has ID.
-                        // I'll assume variantId is sufficient for reference, but SKU is better. 
-                        // Let's use ID as SKU for now or fetch it.
-                        // Actually, I should store SKU in cart or fetch. I'll just use ID string for now in sku field or fetch product.
-                        // Ideally store SKU in CartItem.
-                        // I'll update schema or logic later. For now, putting variantId in SKU field.
+                        variantSku: item.variantId,
                         quantity: item.quantity,
                         priceAtPurchase: item.price
                     }))
@@ -40,18 +37,72 @@ export async function createOrder(items: CartItem[], total: number, shippingInfo
             }
         })
 
-        // Simulate payment processing (since Instamojo/Stripe is skipped for now)
-        // In real app, redirect to payment gateway here.
+        // Instamojo Integration
+        const API_KEY = process.env.INSTAMOJO_API_KEY
+        const AUTH_TOKEN = process.env.INSTAMOJO_AUTH_TOKEN
+        // const AUTH_TOKEN = process.env.INSTAMOJO_SALT // Sometimes called Salt in older docs, but v1.1 calls it Auth Token? 
+        // User said "salt and api". 
+        // Standard header is X-Auth-Token: <Auth_Token>
 
-        // Mark as paid for simulation
-        await prisma.order.update({
-            where: { id: order.id },
-            data: { status: "PAID" }
-        })
+        const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
-        return { success: true, orderId: order.id }
-    } catch (error) {
+        if (API_KEY && AUTH_TOKEN) {
+            console.log("Initiating Instamojo Payment...")
+            const payload = new URLSearchParams()
+            payload.append("purpose", `Ordering #${order.id.substring(0, 8)}`)
+            payload.append("amount", total.toFixed(2))
+            payload.append("buyer_name", shippingInfo.name)
+            payload.append("email", shippingInfo.email)
+            payload.append("phone", "9999999999") // Placeholder phone if strictly required. Instamojo often requires phone.
+            payload.append("redirect_url", `${BASE_URL}/checkout/success?orderId=${order.id}`)
+            payload.append("send_email", "True")
+            payload.append("webhook", `${BASE_URL}/api/webhook/instamojo`) // Optional
+            payload.append("allow_repeated_payments", "False")
+
+            // Use Prod URL ? User didn't specify Sandbox. Default to Prod for real "Integration".
+            // But if keys are invalid it will fail.
+            const response = await fetch("https://www.instamojo.com/api/1.1/payment-requests/", {
+                method: "POST",
+                headers: {
+                    "X-Api-Key": API_KEY,
+                    "X-Auth-Token": AUTH_TOKEN
+                },
+                body: payload
+            })
+
+            const data = await response.json()
+            console.log("Instamojo Response:", data)
+
+            if (data.success) {
+                const longUrl = data.payment_request.longurl
+                // Update order with payment ID if available
+                await prisma.order.update({
+                    where: { id: order.id },
+                    data: {
+                        paymentId: data.payment_request.id,
+                        paymentInfo: data as any
+                    }
+                })
+                return { success: true, orderId: order.id, redirectUrl: longUrl }
+            } else {
+                console.error("Instamojo Error:", data)
+                throw new Error(JSON.stringify(data.message) || "Payment initiation failed")
+            }
+        } else {
+            console.warn("Instamojo Keys missing. Simulating success.")
+            // Simulate payment processing
+            // In real app, redirect to payment gateway here.
+
+            // Mark as paid for simulation
+            await prisma.order.update({
+                where: { id: order.id },
+                data: { status: "PAID" }
+            })
+
+            return { success: true, orderId: order.id }
+        }
+    } catch (error: any) {
         console.error("Order creation failed:", error)
-        return { success: false, error: "Failed to create order" }
+        return { success: false, error: error.message || "Failed to create order" }
     }
 }

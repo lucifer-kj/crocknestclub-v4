@@ -31,54 +31,47 @@
 
 @layer base {
   :root {
-    /* Default to Dark/Loud Mode */
-    --background: 0 0% 0%;
-    /* Black */
-    --foreground: 0 0% 100%;
-    /* White */
+    /* LOUD MODE: Default White/Black */
+    --background: 0 0% 100%;       /* White */
+    --foreground: 0 0% 0%;         /* Black */
 
-    --card: 0 0% 3%;
-    /* Very dark grey */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 96%;             /* Light Grey for cards */
+    --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 80 100% 50%;
-    /* Acid Green */
+    --primary: 80 100% 50%;       /* Acid Green */
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 320 100% 50%;
-    /* Hot Pink */
+    --secondary: 320 100% 50%;    /* Hot Pink */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 80 100% 50%;
-    /* Acid Green */
+    --accent: 80 100% 50%;        /* Acid Green */
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 80 100% 50%;
-    /* Ring matches Primary */
+    --border: 0 0% 0%;            /* Black borders for brutalist feel */
+    --input: 0 0% 100%;
+    --ring: 0 0% 0%;              /* Black ring */
 
-    --radius: 0rem;
-    /* Sharp edges for Brutalist look */
+    --radius: 0rem;               /* Sharp edges */
   }
 
   .dark {
+    /* OPTIONAL DARK MODE: Inverted */
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
-    --card: 0 0% 3%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 3%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
     --primary: 80 100% 50%;
@@ -87,7 +80,7 @@
     --secondary: 320 100% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 12%;
+    --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
 
     --accent: 80 100% 50%;
@@ -97,7 +90,7 @@
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --input: 0 0% 10%;
     --ring: 80 100% 50%;
   }
 

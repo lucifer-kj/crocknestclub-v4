@@ -27,23 +27,26 @@ export default async function AdminOrdersPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {orders.map((order) => (
-                            <TableRow key={order.id}>
-                                <TableCell className="font-mono">{order.id.slice(0, 8)}</TableCell>
-                                <TableCell>
-                                    <div>{order.user?.name || (order.shippingInfo as any)?.name || "Guest"}</div>
-                                    <div className="text-xs text-muted-foreground">{order.user?.email || (order.shippingInfo as any)?.email}</div>
-                                </TableCell>
-                                <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
-                                <TableCell>
-                                    <Badge variant={order.status === "SHIPPED" ? "default" : "secondary"}>
-                                        {order.status}
-                                    </Badge>
-                                </TableCell>
-                                <TableCell>{order.items.length} items</TableCell>
-                                <TableCell className="text-right font-medium">${Number(order.total).toFixed(2)}</TableCell>
-                            </TableRow>
-                        ))}
+                        {orders.map((order) => {
+                            const shippingInfo: any = order.shippingInfo;
+                            return (
+                                <TableRow key={order.id}>
+                                    <TableCell className="font-mono">{order.id.slice(0, 8)}</TableCell>
+                                    <TableCell>
+                                        <div>{order.user?.name || shippingInfo?.name || "Guest"}</div>
+                                        <div className="text-xs text-muted-foreground">{order.user?.email || shippingInfo?.email}</div>
+                                    </TableCell>
+                                    <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
+                                    <TableCell>
+                                        <Badge variant={order.status === "SHIPPED" ? "default" : "secondary"}>
+                                            {order.status}
+                                        </Badge>
+                                    </TableCell>
+                                    <TableCell>{order.items.length} items</TableCell>
+                                    <TableCell className="text-right font-medium">${Number(order.total).toFixed(2)}</TableCell>
+                                </TableRow>
+                            )
+                        })}
                     </TableBody>
                 </Table>
             </div>
