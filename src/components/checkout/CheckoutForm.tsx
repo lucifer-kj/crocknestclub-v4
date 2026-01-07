@@ -1,3 +1,5 @@
+"use client";
+
 export function CheckoutForm() {
     return (
         <div className="flex-1 px-4 py-8 lg:px-10 lg:py-12 lg:border-r border-primary/20">
@@ -132,7 +134,7 @@ export function CheckoutForm() {
                                     <div className="relative">
                                         <input className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/20 px-4 py-3 text-base outline-none focus:ring-2 ring-primary/20 transition focus:border-primary focus:ring-primary text-black dark:text-white placeholder:text-gray-400" placeholder="CVC" type="text" />
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 cursor-help" title="3 digits on back of card">
-                                            <span class="material-symbols-outlined text-lg">help</span>
+                                            <span className="material-symbols-outlined text-lg">help</span>
                                         </div>
                                     </div>
                                 </label>

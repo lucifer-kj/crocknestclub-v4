@@ -24,6 +24,15 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* Custom Colors from config */
+  --color-background-light: #f8f9ff;
+  --color-background-dark: #050a14;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #0a0e17;
+  --color-text-main: #000000;
+  --color-text-sub: #6b7280;
+  --color-primary-dark: #0029A3;
 }
 
 @layer base {

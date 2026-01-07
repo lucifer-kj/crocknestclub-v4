@@ -1,3 +1,5 @@
+"use client";
+
 export function OrderSummary() {
     return (
         <div className="w-full lg:w-[480px] bg-gray-50 dark:bg-white/5 px-4 py-8 lg:px-10 lg:py-12 lg:min-h-screen border-l border-primary/20">
