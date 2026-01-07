@@ -51,8 +51,10 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
                 <ProductGallery images={product.images} />
                 <ProductInfo
+                    id={product.id}
                     title={product.title}
                     price={`₹${product.basePrice.toString()}`}
+                    image={product.images[0] || ""}
                     oldPrice={undefined} // Schema doesn't have oldPrice yet
                     description={product.description}
                 />

@@ -19,50 +19,57 @@ export async function createOrder(items: CartItem[], _clientTotal: number, shipp
     }
 
     try {
-        // Server-Side Price Calculation (Security Fix)
-        let calculatedTotal = 0
-        const secureItems = []
+        // Server-Side Price Calculation & Inventory Locking (P0 Security Fix)
+        const order = await prisma.$transaction(async (tx) => {
+            let calculatedTotal = 0
+            const secureItems = []
 
-        for (const item of items) {
-            const variant = await prisma.variant.findUnique({
-                where: { id: item.variantId },
-                include: { product: true }
-            })
+            for (const item of items) {
+                const variant = await tx.variant.findUnique({
+                    where: { id: item.variantId },
+                    include: { product: true }
+                })
 
-            if (!variant) {
-                throw new Error(`Product variant not found: ${item.title}`)
-            }
-
-            // Verify stock (Optional P0 addition: Check stock)
-            if (variant.stock < item.quantity) {
-                throw new Error(`Insufficient stock for ${variant.product.title} (${variant.size}/${variant.color})`)
-            }
-
-            const price = Number(variant.product.basePrice)
-            calculatedTotal += price * item.quantity
-
-            secureItems.push({
-                productSnapshot: {
-                    title: variant.product.title,
-                    price: price,
-                    image: variant.product.images[0] || ""
-                },
-                variantSku: variant.sku,
-                quantity: item.quantity,
-                priceAtPurchase: price
-            })
-        }
-
-        const order = await prisma.order.create({
-            data: {
-                total: calculatedTotal,
-                status: "PENDING",
-                user: undefined, // Guest checkout
-                shippingInfo: shippingInfo as any,
-                items: {
-                    create: secureItems
+                if (!variant) {
+                    throw new Error(`Product variant not found: ${item.title}`)
                 }
+
+                // Inventory Lock: Decrement stock
+                if (variant.stock < item.quantity) {
+                    throw new Error(`Insufficient stock for ${variant.product.title} (${variant.size}/${variant.color})`)
+                }
+
+                await tx.variant.update({
+                    where: { id: variant.id },
+                    data: { stock: { decrement: item.quantity } }
+                })
+
+                const price = Number(variant.product.basePrice)
+                calculatedTotal += price * item.quantity
+
+                secureItems.push({
+                    productSnapshot: {
+                        title: variant.product.title,
+                        price: price,
+                        image: variant.product.images[0] || ""
+                    },
+                    variantSku: variant.sku,
+                    quantity: item.quantity,
+                    priceAtPurchase: price
+                })
             }
+
+            return await tx.order.create({
+                data: {
+                    total: calculatedTotal,
+                    status: "PENDING",
+                    user: undefined, // Guest checkout
+                    shippingInfo: shippingInfo as any,
+                    items: {
+                        create: secureItems
+                    }
+                }
+            })
         })
 
         // Instamojo Integration
@@ -74,7 +81,7 @@ export async function createOrder(items: CartItem[], _clientTotal: number, shipp
             console.log("Initiating Instamojo Payment (INR)...")
             const payload = new URLSearchParams()
             payload.append("purpose", `Order #${order.id.substring(0, 8)}`)
-            payload.append("amount", calculatedTotal.toFixed(2))
+            payload.append("amount", order.total.toFixed(2))
             payload.append("buyer_name", shippingInfo.name)
             payload.append("email", shippingInfo.email)
             payload.append("phone", "9999999999")

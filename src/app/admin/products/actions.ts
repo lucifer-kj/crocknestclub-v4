@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import { z } from "zod"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
+import { auth } from "@/auth"
 
 const productSchema = z.object({
     title: z.string().min(1, "Title is required"),
@@ -17,6 +18,11 @@ const productSchema = z.object({
 })
 
 export async function updateProduct(id: string, formData: FormData) {
+    const session = await auth()
+    if (session?.user?.role !== "ADMIN") {
+        throw new Error("Unauthorized")
+    }
+
     const rawData = {
         title: formData.get("title"),
         description: formData.get("description"),
@@ -51,6 +57,11 @@ export async function updateProduct(id: string, formData: FormData) {
 }
 
 export async function createProduct(formData: FormData) {
+    const session = await auth()
+    if (session?.user?.role !== "ADMIN") {
+        throw new Error("Unauthorized")
+    }
+
     const rawData = {
         title: formData.get("title"),
         description: formData.get("description"),
@@ -93,12 +104,19 @@ export async function createProduct(formData: FormData) {
 }
 
 export async function deleteProduct(id: string) {
+    const session = await auth()
+    if (session?.user?.role !== "ADMIN") {
+        throw new Error("Unauthorized")
+    }
+
     try {
         await prisma.product.delete({ where: { id } })
         revalidatePath("/admin/products")
         revalidatePath("/shop")
         return { success: true }
     } catch (error) {
-        return { success: false, error: "Failed to delete" }
+        console.error("Failed to delete product:", error)
+        return { success: false, error: "Failed to delete product" }
     }
 }
+

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { StitchHeader } from "@/components/layout/StitchHeader";
 import { StitchFooter } from "@/components/layout/StitchFooter";
+import { CartProvider } from "@/store/cart-context";
 
 export default function ClientLayoutWrapper({
     children,
@@ -14,16 +15,20 @@ export default function ClientLayoutWrapper({
     const isCheckoutFlow = ["/checkout", "/success"].includes(pathname);
 
     if (isCheckoutFlow) {
-        return <main className="flex-1">{children}</main>;
+        return (
+            <CartProvider>
+                <main className="flex-1">{children}</main>
+            </CartProvider>
+        );
     }
 
     return (
-        <>
+        <CartProvider>
             <StitchHeader />
             <main className="flex-1">
                 {children}
             </main>
             <StitchFooter />
-        </>
+        </CartProvider>
     );
 }

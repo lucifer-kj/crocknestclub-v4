@@ -1,17 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import { useCart } from "@/store/cart-context";
 
 interface ProductInfoProps {
+    id: string;
     title: string;
     price: string;
+    image: string;
     oldPrice?: string;
     description: string;
 }
 
-export function ProductInfo({ title, price, oldPrice, description }: ProductInfoProps) {
+export function ProductInfo({ id, title, price, image, oldPrice, description }: ProductInfoProps) {
     const [qty, setQty] = useState(1);
     const [selectedSize, setSelectedSize] = useState('M');
+    const { addToCart } = useCart();
+    const [isAdding, setIsAdding] = useState(false);
+
+    const handleAddToCart = () => {
+        setIsAdding(true);
+        addToCart({
+            productId: id,
+            variantId: `${id}-${selectedSize}-Default`,
+            title: title,
+            price: parseFloat(price.replace(/[^0-9.]/g, '')),
+            image: image,
+            size: selectedSize,
+            color: "Default",
+            quantity: qty
+        });
+
+        setTimeout(() => setIsAdding(false), 500);
+    };
 
     return (
         <div className="lg:col-span-5 relative">
@@ -59,8 +80,8 @@ export function ProductInfo({ title, price, oldPrice, description }: ProductInfo
                                 key={size}
                                 onClick={() => setSelectedSize(size)}
                                 className={`h-12 rounded-lg font-bold text-sm transition-all border ${selectedSize === size
-                                        ? 'bg-black dark:bg-white text-white dark:text-black ring-2 ring-primary border-primary shadow-md'
-                                        : 'bg-white dark:bg-surface-dark text-slate-900 dark:text-white border-primary/40 hover:border-primary hover:text-primary'
+                                    ? 'bg-black dark:bg-white text-white dark:text-black ring-2 ring-primary border-primary shadow-md'
+                                    : 'bg-white dark:bg-surface-dark text-slate-900 dark:text-white border-primary/40 hover:border-primary hover:text-primary'
                                     }`}
                             >
                                 {size}
@@ -76,9 +97,12 @@ export function ProductInfo({ title, price, oldPrice, description }: ProductInfo
                             <span className="font-bold text-slate-900 dark:text-white">{qty}</span>
                             <button onClick={() => setQty(qty + 1)} className="p-1 hover:text-primary transition-colors"><span className="material-symbols-outlined text-sm">add</span></button>
                         </div>
-                        <button className="flex-1 h-14 bg-black dark:bg-white text-white dark:text-black rounded-xl font-bold text-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group border border-primary">
-                            <span>Add to Cart</span>
-                            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        <button
+                            onClick={handleAddToCart}
+                            disabled={isAdding}
+                            className="flex-1 h-14 bg-black dark:bg-white text-white dark:text-black rounded-xl font-bold text-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group border border-primary disabled:opacity-75 disabled:cursor-not-allowed">
+                            <span>{isAdding ? "Adding..." : "Add to Cart"}</span>
+                            {!isAdding && <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>}
                         </button>
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-xs text-slate-500 mt-2">
