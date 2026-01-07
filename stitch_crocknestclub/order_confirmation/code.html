@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - CROCKNESTCLUB</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0b0bda",
+                        "background-light": "#ffffff",
+                        "background-alt": "#f8f9fa",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display text-slate-900 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-primary/10 bg-white/90 backdrop-blur-md px-6 py-4 lg:px-12">
+<div class="flex items-center gap-4">
+<div class="flex size-8 items-center justify-center rounded bg-primary text-white shadow-md shadow-primary/30">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<h2 class="text-xl font-black uppercase tracking-tight text-slate-900">CROCKNESTCLUB</h2>
+</div>
+<div class="flex gap-3">
+<button class="group flex size-10 cursor-pointer items-center justify-center rounded-lg border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all text-slate-700">
+<span class="material-symbols-outlined group-hover:text-primary">person</span>
+</button>
+<button class="group flex size-10 cursor-pointer items-center justify-center rounded-lg border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all text-slate-700">
+<span class="material-symbols-outlined group-hover:text-primary">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-4 py-12 md:px-6 lg:px-8 bg-white">
+<div class="mx-auto max-w-5xl">
+<div class="mb-16 flex flex-col items-center text-center">
+<div class="mb-8 flex size-24 items-center justify-center rounded-full bg-gradient-to-br from-primary via-blue-600 to-slate-900 shadow-xl shadow-primary/20 ring-4 ring-white">
+<span class="material-symbols-outlined text-5xl text-white">check</span>
+</div>
+<h1 class="mb-4 text-4xl font-black leading-tight tracking-tight md:text-6xl uppercase text-slate-900">
+                    Thanks for joining<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">the club!</span>
+</h1>
+<p class="max-w-md text-lg text-slate-600 font-medium">
+                    Your order <span class="text-primary font-bold">#882910</span> is locked in. We've sent a receipt to alex@example.com.
+                </p>
+</div>
+<div class="grid gap-8 lg:grid-cols-3">
+<div class="lg:col-span-2 space-y-8">
+<div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm hover:border-primary/30 transition-colors duration-300">
+<h3 class="mb-6 text-lg font-bold uppercase tracking-wide text-slate-900 border-b border-slate-100 pb-4">Order Details</h3>
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+<div class="space-y-1">
+<p class="text-xs font-bold uppercase text-primary tracking-wider">Order Number</p>
+<p class="text-base font-semibold text-slate-900">#882910</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-bold uppercase text-primary tracking-wider">Estimated Delivery</p>
+<p class="text-base font-semibold text-slate-900">Oct 28 - Oct 30, 2023</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-bold uppercase text-primary tracking-wider">Shipping Address</p>
+<p class="text-base text-slate-600">123 Electric Ave<br/>New York, NY 10012</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-bold uppercase text-primary tracking-wider">Payment Method</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">credit_card</span>
+<p class="text-base text-slate-600">Visa ending in 4242</p>
+</div>
+</div>
+</div>
+</div>
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:border-primary/30 transition-colors duration-300">
+<div class="px-8 py-5 border-b border-slate-100 bg-background-alt">
+<h3 class="text-lg font-bold uppercase tracking-wide text-slate-900">Items Ordered</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full min-w-[500px]">
+<thead>
+<tr class="border-b border-slate-100">
+<th class="px-8 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-500 w-[50%]">Product</th>
+<th class="px-8 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-500">Size</th>
+<th class="px-8 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-500">Qty</th>
+<th class="px-8 py-4 text-right text-xs font-bold uppercase tracking-wider text-slate-500">Price</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="group hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+<img alt="Modern graphic tee with bold print" class="h-full w-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzGR90-bB7fbM0NfNgihg4WRKlS3evq12WVQpM_3LZmzbQxqIcDPMEPfKVAw-ME2N8b8UV8IHwsddLgDG1vlP_qhNNq99M0dWxd-fp4rhUnYH3pn_ZJsPyPLbkUJeVbYpaYgDYdKunoYronVxlYCuTaoYLDky7gL3gicL44vyEBDgiHe8dzXcJGjg0oNLBcVJkIZJZwJcBqHIo9-OlUoYGwndat54D6z-gQyLHMAve9O9lAT2T1oaFJTkQhmBnyMZXy9ZfIE3e_tM"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 text-lg">Neon Cyber Tee</p>
+<p class="text-sm text-slate-500">Black / Cotton</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-medium text-slate-700">L</td>
+<td class="px-8 py-6 text-center font-medium text-slate-700">1</td>
+<td class="px-8 py-6 text-right font-bold text-slate-900">$35.00</td>
+</tr>
+<tr class="group hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+<img alt="Urban style cargo pants" class="h-full w-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQpcUWUYvVceW9gXPJLB17odLEW7TpULlK9pphw-BLpjU7WgtpsXSuKt7k-TLWQ_mH2jTml43p3RwJW33pDKysT1YXLAtg2-5gF4qR8mWbbmb8ZQQRsgnuXsWycUGUa40X28zg6NPNLgUsBqjk8qBPQXAzRp9udqtuHaiN19WePcipv3Z8c29hOtBTcv6-vn1tn8ZQQBh6zxTjnQ6GekLLVH3IcB_-bTqJkDxE17zE1kompLVfnXRS91eiEIG4AmDZ3dAEAsMrB_M"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 text-lg">Tech Cargo Pants</p>
+<p class="text-sm text-slate-500">Charcoal</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-medium text-slate-700">32</td>
+<td class="px-8 py-6 text-center font-medium text-slate-700">1</td>
+<td class="px-8 py-6 text-right font-bold text-slate-900">$55.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="rounded-xl border border-primary/20 bg-white p-8 shadow-xl shadow-primary/5">
+<h3 class="mb-6 text-lg font-bold uppercase tracking-wide text-slate-900">Summary</h3>
+<div class="space-y-4 border-b border-dashed border-slate-200 pb-6">
+<div class="flex justify-between items-center">
+<p class="text-slate-500">Subtotal</p>
+<p class="font-semibold text-slate-900">$90.00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-slate-500">Shipping</p>
+<p class="font-semibold text-primary">Free</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-slate-500">Tax</p>
+<p class="font-semibold text-slate-900">$0.00</p>
+</div>
+</div>
+<div class="flex justify-between items-center py-6">
+<p class="text-xl font-bold uppercase text-slate-900">Total</p>
+<p class="text-3xl font-black text-primary">$90.00</p>
+</div>
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary py-4 px-6 text-sm font-bold uppercase tracking-wider text-white transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 active:scale-[0.98]">
+                            Continue Shopping
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="mt-3 w-full flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-transparent py-3 px-6 text-sm font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-primary hover:text-primary hover:bg-primary/5">
+                            Track Order
+                        </button>
+</div>
+<div class="rounded-xl bg-background-alt border border-slate-100 p-6 text-center">
+<p class="mb-2 font-bold text-slate-900">Questions?</p>
+<p class="mb-4 text-sm text-slate-500">We're here to help you with your order.</p>
+<a class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 hover:underline" href="#">
+                            Contact Support <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-24 border-t border-slate-200 pt-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-black uppercase tracking-tight text-slate-900 md:text-3xl">You Might Also Like</h3>
+<a class="hidden md:inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline" href="#">View All Collection <span class="material-symbols-outlined text-sm">arrow_right_alt</span></a>
+</div>
+<div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
+<div class="group cursor-pointer">
+<div class="relative mb-4 aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100 z-10"></div>
+<img alt="Oversized bomber jacket" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSuxPE2Lyf7CFqVBw35oGi9ByEBABBwjLX3d-IMAoUZxqoxXMjrDmxPTBcXCqQGjZ_KV5RVek7MZRx82QIlmiv5aBvRhiRyRLfs0iB2dh9K4IhFXS6FFFDYTqkPeuJKxYF8gBHFnRZEsr5wEa6DUOXuybOCpVSKWM6YET1Mw-BGLVGLnu41AoJ0_WchOWgiUZW6hJC01Hh9eHpdkCmTBrKRWV5bNlVqG0kgG3MAH4apItq_uh4PD0g9bHAKkAf6rLulTstCBwRXsQ"/>
+<button class="absolute bottom-4 left-4 right-4 z-20 translate-y-4 rounded-lg bg-white py-2.5 text-xs font-bold uppercase text-slate-900 shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-primary hover:text-white">Quick Add</button>
+</div>
+<h4 class="font-bold text-slate-900 group-hover:text-primary text-lg leading-tight mb-1">Varsity Bomber</h4>
+<p class="text-sm font-medium text-slate-500">$85.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative mb-4 aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100 z-10"></div>
+<img alt="Distressed denim jeans" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_9x32Q7F5pY84FYwXYZT86YMgHJCpTqL5dLXbV8sbSkscXOSPTmF2QOE8Roo0edwmlh4GzVwpn60EKjvuE_mMZFVt7uHp794FBCQ_njOnliOjkUs5OZF4RfH_LxCuN1ig8yxH9IOG87ug88DHUll8v_aeFreY5HEqFFRLqOvPsKT2Pj0xrODI4uvtr1ZSkP2Ez2D4flwrqWQOU43G3Mtx5znsREbALFWAMuwJ5QtnOr2kXey2RrGXBd1Mb_312y1TMOKyfllR7Jo"/>
+<button class="absolute bottom-4 left-4 right-4 z-20 translate-y-4 rounded-lg bg-white py-2.5 text-xs font-bold uppercase text-slate-900 shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-primary hover:text-white">Quick Add</button>
+</div>
+<h4 class="font-bold text-slate-900 group-hover:text-primary text-lg leading-tight mb-1">Ripped Denim</h4>
+<p class="text-sm font-medium text-slate-500">$60.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative mb-4 aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100 z-10"></div>
+<img alt="Black cotton hoodie" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhci2ywNunFINJ03Mom-baLpbepDN4iInH6M_sto1RdLaRyLFPxCnZAVK7utyKGu_YiUGksO_rY2m_JFC5vf9I4u4HcwPwe6IjeiuVOE044yslt0-zamGaTBdA5sb_gTQ3II6jH3dDl-lFQbFWqj7qsaPPGv9T0ZEhz201YzK7IUw-TunDEKB3QmRgUzoP_TpsvYfijrqBU1LjfyOiCDYFENShZDxeqpdeb_ZglC-dFSiTZ2j-VjEt_lO094FHmqYsQTXAssn98mU"/>
+<button class="absolute bottom-4 left-4 right-4 z-20 translate-y-4 rounded-lg bg-white py-2.5 text-xs font-bold uppercase text-slate-900 shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-primary hover:text-white">Quick Add</button>
+</div>
+<h4 class="font-bold text-slate-900 group-hover:text-primary text-lg leading-tight mb-1">Noir Hoodie</h4>
+<p class="text-sm font-medium text-slate-500">$45.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative mb-4 aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100 z-10"></div>
+<img alt="Graphic printed tote bag" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCV5NR677mkD3IpxhoGL6er753bCUhG_lhqBRYf0c-4rWo-iY8sYHd-vO-y7Gbw44ZgWP3guqKT63FOmOuHcMm2_ZO1-LTFe7B20eFSb-WkwN8IrSP1G07h8l68EwDY0G_M5KABQnfECCNvxFvGbHKwKqLQTvFMW0dQC9heaLx-w0VZt2Ve_PQ5TT1IHdxqU46hFQLDwaJfv-JYhUa-ZmzVLAVsAKOlk5UDIXci0hr3RSouId8lvWf8Ws8cMQAuPudjqz0CQ79XuA"/>
+<button class="absolute bottom-4 left-4 right-4 z-20 translate-y-4 rounded-lg bg-white py-2.5 text-xs font-bold uppercase text-slate-900 shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-primary hover:text-white">Quick Add</button>
+</div>
+<h4 class="font-bold text-slate-900 group-hover:text-primary text-lg leading-tight mb-1">Club Tote</h4>
+<p class="text-sm font-medium text-slate-500">$25.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-100 bg-background-alt py-12 text-center">
+<div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-slate-500 mb-6">
+<a class="hover:text-primary transition-colors uppercase tracking-wider" href="#">Returns &amp; Exchanges</a>
+<a class="hover:text-primary transition-colors uppercase tracking-wider" href="#">Shipping Info</a>
+<a class="hover:text-primary transition-colors uppercase tracking-wider" href="#">Contact Us</a>
+<a class="hover:text-primary transition-colors uppercase tracking-wider" href="#">Privacy Policy</a>
+</div>
+<p class="text-xs text-slate-400 font-medium">© 2023 CROCKNESTCLUB. All rights reserved.</p>
+</footer>
+</div>
+
+</body></html>

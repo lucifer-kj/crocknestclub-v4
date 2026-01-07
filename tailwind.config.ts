@@ -11,6 +11,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "primary": "#0040FF",
+        "primary-dark": "#0029A3",
+        "background-light": "#f8f9ff",
+        "background-dark": "#050a14",
+        "text-main": "#000000",
+        "text-sub": "#6b7280",
+        "surface-light": "#ffffff",
+        "surface-dark": "#0a0e17",
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -20,10 +28,6 @@ const config: Config = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))'
-        },
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +55,10 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
         }
+      },
+      fontFamily: {
+        "display": ["Plus Jakarta Sans", "sans-serif"],
+        "sans": ["Plus Jakarta Sans", "sans-serif"]
       },
       borderRadius: {
         lg: 'var(--radius)',

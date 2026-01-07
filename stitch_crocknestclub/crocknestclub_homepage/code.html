@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CROCKNESTCLUB Homepage</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0040FF",
+                        "primary-dark": "#0029A3",
+                        "background-light": "#ffffff",
+                        "background-dark": "#020410",
+                        "text-main": "#000000",
+                        "text-sub": "#6b7280",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#0a0e17"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display overflow-x-hidden antialiased">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-primary/30 bg-surface-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 group" href="#">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white transition-transform group-hover:rotate-12">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<h2 class="text-text-main dark:text-white text-xl font-black tracking-tighter">CROCKNESTCLUB</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-text-main dark:text-gray-300 hover:text-primary text-sm font-semibold transition-colors" href="#">New Drops</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary text-sm font-semibold transition-colors" href="#">Collections</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary text-sm font-semibold transition-colors" href="#">Sale</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary text-sm font-semibold transition-colors" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex w-full max-w-[240px] items-center rounded-lg bg-gray-100 dark:bg-white/5 px-3 py-2 border border-primary/40 transition-all focus-within:ring-2 focus-within:ring-primary">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-400 text-[20px]">search</span>
+<input class="w-full bg-transparent border-none text-sm p-0 pl-2 text-text-main dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-0" placeholder="Search..." type="text"/>
+</div>
+<div class="flex gap-1">
+<button class="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors lg:hidden">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</button>
+<button class="relative flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-primary ring-2 ring-white dark:ring-background-dark"></span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<section class="w-full px-4 py-8 sm:px-6 lg:px-8 bg-white dark:from-background-dark dark:to-background-dark">
+<div class="mx-auto max-w-[1280px]">
+<div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+<div class="flex flex-col gap-6 order-2 lg:order-1 text-center lg:text-left">
+<div class="space-y-4">
+<span class="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                                New Season Arrival
+                            </span>
+<h1 class="text-5xl font-black leading-[0.9] tracking-tighter text-text-main dark:text-white sm:text-6xl md:text-7xl xl:text-8xl">
+                                WEAR <br class="hidden lg:block"/> <span class="text-primary">THE REVOLUTION.</span>
+</h1>
+<p class="mx-auto lg:mx-0 max-w-lg text-lg text-gray-600 dark:text-gray-300">
+                                Exclusive drops for the bold. Join the Crocknest Club for early access to the freshest GenZ fits.
+                            </p>
+</div>
+<div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+<button class="inline-flex h-12 items-center justify-center rounded-lg bg-black px-8 text-sm font-bold text-white transition-transform hover:scale-105 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">
+                                Shop Men
+                            </button>
+<button class="inline-flex h-12 items-center justify-center rounded-lg border border-primary bg-transparent px-8 text-sm font-bold text-text-main dark:text-white hover:bg-primary/5 transition-colors">
+                                Shop Women
+                            </button>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 lg:aspect-square shadow-2xl shadow-black/10 transform rotate-1 hover:rotate-0 transition-all duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+<div class="h-full w-full bg-cover bg-center" data-alt="Young model wearing colorful oversized hoodie in neon city street setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0H7TwLQuMZLhcHlc3nJO4FcODAseB8TgYhIkVt1xfUD7SSwZRtchAJyj6E0D-1EiaGhduYhQ6NgpL4MEktVP5zjWl0aKtqC5NhUFPeINpAC9bRwHCm6y2XnD82H8SZoD_Sf82HZPAxAZwO_x957GEbTown_2kWWdQib0aqqg9gYVVuemY1dSVmLzubhxy2DLJdb4T6flab1INxA_FPuOnxZYU5pIFxzVrVlAvi89TMRL6zxhUg8c5nJsErpFbVF8cX42N5dvUO1I");'>
+</div>
+<div class="absolute bottom-6 left-6 z-20 rounded-lg bg-white/90 dark:bg-background-dark/90 backdrop-blur px-4 py-3 shadow-lg">
+<p class="text-xs font-bold text-gray-500 dark:text-gray-400">Featured Look</p>
+<p class="font-bold text-text-main dark:text-white">Cyber Punk Hoodie</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="w-full py-12">
+<h2 class="text-center text-3xl font-black tracking-tighter text-text-main dark:text-white md:text-4xl">
+                TRENDING NOW
+            </h2>
+<div class="mx-auto mt-2 h-1 w-24 rounded-full bg-primary"></div>
+</div>
+<section class="w-full pb-12 overflow-hidden">
+<div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+<div class="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none]">
+<div class="group relative min-w-[280px] flex-1 cursor-pointer rounded-xl bg-surface-light dark:bg-white/5 p-3 transition-all hover:shadow-xl hover:shadow-black/10">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-200">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Model wearing acid wash t-shirt looking away" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDK8eW-yXgi96Dm8p-9pskEPPC9pCyiIkjmlS-caVC_rqYQd0P7zouQz-iWDuKvKH8UQfKYT_S58Q776eVE24RuokCCCOA2UAm3JsTk78wXZNNj2-CAXhBwhEfjJBC_9KF-sEP3qhm5qJKXEUSuxSehNSsIFwIx-yN_PvZvPrjJU8jkMOgSFwQLbLpF7A-RHCDTU9Lnz2WDRCjCixzIIIqV1tsErzqyNxn0YgMKWWTgpXpAN2WpIoHNOb51jrsvAl5nA-VDM-WQi3Y");'>
+</div>
+<div class="absolute top-3 right-3 rounded-full bg-white dark:bg-background-dark p-1.5 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px] text-primary">favorite</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-black p-3 text-center text-white translate-y-full transition-transform group-hover:translate-y-0">
+<span class="font-bold text-sm">Quick Add</span>
+</div>
+</div>
+<div class="mt-4 px-1">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Acid Wash Tee</h3>
+<div class="flex items-center justify-between mt-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Unisex / Cotton</p>
+<p class="font-bold text-primary">$35.00</p>
+</div>
+</div>
+</div>
+<div class="group relative min-w-[280px] flex-1 cursor-pointer rounded-xl bg-surface-light dark:bg-white/5 p-3 transition-all hover:shadow-xl hover:shadow-black/10">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-200">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Person wearing black hoodie with neon graphics in urban setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4uSYrR3gzwTPUD2qh6cfebEktFTHfjLyBc_79AUbkzgHe2cdbN9_XU9zFpyt3mWyYQ8DUqNj5hHa2_S05tQAoMjH1910m-Zk_jOllQIXQnW3l9_TeTD23G4yLK0hueJw4kl9dvUla7m42DwGk2cFmw6pYKz7WjZ_NSnz6Dq4mJwlZDuFYzCNz38UXcrxaOfK8kCfQYSWlTskIPji8ptYk5gHbM08-bgxh0R9bFFJqnQGRqWaBYHW7I8Ty7UBMZ6AuXS14RX1jgG0");'>
+</div>
+<div class="absolute top-3 left-3 rounded bg-red-500 px-2 py-1 text-[10px] font-bold text-white uppercase tracking-wide">
+                                Sale
+                            </div>
+<div class="absolute top-3 right-3 rounded-full bg-white dark:bg-background-dark p-1.5 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px] text-primary">favorite</span>
+</div>
+<button class="absolute bottom-0 left-0 right-0 bg-black p-3 text-center text-white translate-y-full transition-transform group-hover:translate-y-0 w-full border-none cursor-pointer">
+<span class="font-bold text-sm">Quick Add</span>
+</button>
+</div>
+<div class="mt-4 px-1">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Cyber Punk Hoodie</h3>
+<div class="flex items-center justify-between mt-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Heavyweight</p>
+<div class="flex gap-2 items-center">
+<span class="text-xs line-through text-gray-400">$65.00</span>
+<p class="font-bold text-primary">$55.00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative min-w-[280px] flex-1 cursor-pointer rounded-xl bg-surface-light dark:bg-white/5 p-3 transition-all hover:shadow-xl hover:shadow-black/10">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-200">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Model walking in wide leg cargo pants street fashion" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPxJMUihrlKejRMFtvBZg6jFjA5c8VisZ0nm1mn0KnY4Y9jeZHZTLnns9EQsdGai6PdnR6pT31p2Fabuq57ARSFV6kmH4gi_6uB9hwhGnbBc3oZk5TixemtiJ0yFnVkfStW6zgLuXijVrV9C0GMamIjTfe2ET29lwe0BZZiNfi_6My50E-3YZ3VmHGbkG5JQJFFuLNlHf_FWrTDVbHV5vNbHkMNT3KZHhbgs98fxVEF-XoKX5XcBiCEU_wKFs7qzy98ASUB2yw078");'>
+</div>
+<div class="absolute top-3 right-3 rounded-full bg-white dark:bg-background-dark p-1.5 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px] text-primary">favorite</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-black p-3 text-center text-white translate-y-full transition-transform group-hover:translate-y-0">
+<span class="font-bold text-sm">Quick Add</span>
+</div>
+</div>
+<div class="mt-4 px-1">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Wide Leg Cargo</h3>
+<div class="flex items-center justify-between mt-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Denim</p>
+<p class="font-bold text-primary">$48.00</p>
+</div>
+</div>
+</div>
+<div class="group relative min-w-[280px] flex-1 cursor-pointer rounded-xl bg-surface-light dark:bg-white/5 p-3 transition-all hover:shadow-xl hover:shadow-black/10">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-200">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Woman wearing graphic crop top posing against wall" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCanU2F0y9GWGOFO8w6iRDD3rs8eScEagDX-jiGJ6_oQVVZaX_Ex9y3jwKLTLDAgYBiI3XVVS_MJn3g5bi1jjyVn63FX9nroFBS6zd7ABc4y4sOHz8uzk5daSkJDhNvdCjR4UkK0b4mFaZEqvIKOUZb8eFbPXXqHST5Knfnf_L12nonNyc3KlF9pqoFsR5psC1BUIYrjUv1saVq-LUjsyXA2QLB7XXzELRUpicWG4V1r9tnEDiKgyexscnkaJ8ourhKrjyE_mTUaCM");'>
+</div>
+<div class="absolute top-3 right-3 rounded-full bg-white dark:bg-background-dark p-1.5 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px] text-primary">favorite</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-black p-3 text-center text-white translate-y-full transition-transform group-hover:translate-y-0">
+<span class="font-bold text-sm">Quick Add</span>
+</div>
+</div>
+<div class="mt-4 px-1">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Graphic Crop</h3>
+<div class="flex items-center justify-between mt-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Summer Fit</p>
+<p class="font-bold text-primary">$28.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="w-full py-8">
+<h2 class="text-center text-3xl font-black tracking-tighter text-text-main dark:text-white md:text-4xl">
+                SHOP BY VIBE
+            </h2>
+</div>
+<section class="w-full pb-20">
+<div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 h-auto md:h-[600px]">
+<div class="group relative col-span-1 md:col-span-2 md:row-span-2 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Group of friends wearing streetwear in urban skatepark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzw27iFwffJbCPf172f857U_1o9ikBxBlqQh-W6mwDQkYOt_4BF4lv__7YboiWqbg9yoSrmfBb0cBBtYRR5Lsq49TUoTwiAcRzxjs-h2E46gecwY7qTUC7lFfWDvZgvPKee9YFsCt02DHEti7GOtg05j0fMWHV6ScmBK3r64wGiRJYPoXow2Qrrz3r5g7w0bmr3_zOQ2IoCizrjguSV4cjZgNZ6f4Zs3W-cnuccnnj-pE6jNuabFous220Vgf_CMQGYIQrWFqgirk");'>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-6 left-6 md:bottom-10 md:left-10">
+<h3 class="text-3xl font-black text-white md:text-5xl uppercase tracking-tighter">Streetwear<br/>Essentials</h3>
+<a class="mt-4 inline-flex items-center gap-2 text-white font-bold hover:text-primary transition-colors" href="#">
+                                Explore Collection <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative col-span-1 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 h-[250px] md:h-auto">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close up of accessories rings and chains on model" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB76sJGZBxDYoDJW-u22u0scbBA--heafS0xKZibeRCDVjGfenFxWQ5iaTSsHCP84gC5yFSIrSaU6egM4xjZPZQdoC3j2qKf4O1Omzguo8vR2wW8n7kLNpJG0spfx80dj_6zJyEEM-3aSYOnPXcObz33CmsfoIchoDVvG_bP1K_e58TZXT5iZ2_pi6yKQnoG1jhA4xIAWeTWLKOAROnReA34yYlRv6FwWq4LJ1XoRAoTSG7Vy5zpSwqBQaFqAbdfEMB_UwSEdte9aI");'>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="text-2xl font-black text-white uppercase">Accessories</h3>
+</div>
+</div>
+<div class="group relative col-span-1 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 h-[250px] md:h-auto">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Flat lay of denim jeans and jackets" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYYmvb1IKKIfPEFZLBe9CeqJ3jXyFIig6jX3ZvQexTgqFK_1pCNDFYPceuXfZHrBZYjH04EnYHjeJid1nDhvQJK26gF4OiFrE8VqJWm0M0uE51Afg3s_1cfohywVUAVj0-37RJv8vPogZB9jBaGCeOqoJwE96OGOAWI96qp7s_QGnLs5P8sZo7NVVyjbJHF1J6ioIM623mmtSDxc6_OGYvQoPX6a3zo-FqdZqmgWNk1yFX9cZNtHPDeNWLoge3IQMPHdctrqfOd98");'>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="text-2xl font-black text-white uppercase">Denim Lab</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full bg-gradient-to-br from-black via-[#002db3] to-black py-16 text-white relative overflow-hidden">
+<div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/5 blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl"></div>
+<div class="mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8 relative z-10">
+<span class="material-symbols-outlined text-[48px] mb-4 text-white/80">local_activity</span>
+<h2 class="mb-4 text-3xl font-black tracking-tighter md:text-5xl">JOIN THE CROCKNEST CLUB</h2>
+<p class="mx-auto mb-8 max-w-2xl text-lg font-medium text-white/90">
+                    Get early access to drops, exclusive discounts, and be the first to know about our pop-up events.
+                </p>
+<form class="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
+<input class="flex-1 rounded-lg border border-primary bg-white/10 px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-primary" placeholder="Enter your email" required="" type="email"/>
+<button class="rounded-lg bg-white px-6 py-3 font-bold text-black transition-transform hover:scale-105" type="button">
+                        Subscribe
+                    </button>
+</form>
+<p class="mt-4 text-xs text-white/60">By subscribing you agree to our Terms &amp; Privacy Policy.</p>
+</div>
+</section>
+<footer class="w-full border-t border-primary/30 bg-surface-light dark:bg-background-dark py-12">
+<div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+<div class="flex items-center gap-2">
+<div class="flex h-6 w-6 items-center justify-center rounded bg-black text-white">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+</div>
+<span class="text-lg font-black tracking-tight text-text-main dark:text-white">CROCKNESTCLUB</span>
+</div>
+<div class="flex gap-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+<a class="hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:text-primary transition-colors" href="#">FAQ</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Instagram</span>
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">TikTok</span>
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.63 2.58-4.9 2.09-1.81 5.19-1.94 7.42-.31.53.38 1.05.81 1.54 1.28l-3.35 2.56c-.55-.54-1.22-1-2.01-1.22-.88-.22-1.8-.18-2.65.18-.84.34-1.57.94-2.04 1.71-.7 1.14-.64 2.6.14 3.7.8 1.15 2.12 1.71 3.46 1.71 1.61-.02 3.11-.83 3.99-2.17.65-1.01.91-2.2.91-3.39V4.71a7.276 7.276 0 0 0 4.96-4.69z"></path></svg>
+</a>
+</div>
+</div>
+<div class="mt-8 text-center text-xs text-gray-400">
+                    © 2024 CROCKNESTCLUB. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

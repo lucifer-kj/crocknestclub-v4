@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CROCKNESTCLUB - Product Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0b0bda",
+              "background-light": "#f5f5f8",
+              "background-dark": "#101022",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-gradient {
+            background: linear-gradient(180deg, #101022 0%, #05054a 100%);
+        }
+    </style>
+</head>
+<body class="flex h-screen w-full overflow-hidden bg-background-light dark:bg-background-dark text-[#0d0d1c] dark:text-white font-display">
+<aside class="sidebar-gradient w-72 flex-shrink-0 flex flex-col border-r border-primary/20 transition-all duration-300 hidden md:flex">
+<div class="h-20 flex items-center px-8 border-b border-white/10">
+<div class="flex flex-col">
+<h1 class="text-white text-xl font-black tracking-tighter leading-none">CROCKNESTCLUB</h1>
+<p class="text-primary text-xs font-medium tracking-widest uppercase mt-1">Admin Panel</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">shopping_bag</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary text-white shadow-[0_0_15px_rgba(11,11,218,0.4)]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Products</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<div class="my-2 border-t border-white/10"></div>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/10">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 cursor-pointer transition-colors">
+<div class="h-10 w-10 rounded-full bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center text-white font-bold border border-white/20">
+                AD
+            </div>
+<div class="flex flex-col">
+<p class="text-white text-sm font-medium">Admin User</p>
+<p class="text-gray-400 text-xs">admin@crocknest.com</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-[#f8f8fc] dark:bg-background-dark relative">
+<header class="h-16 flex md:hidden items-center justify-between px-4 bg-background-dark text-white">
+<span class="font-black">CROCKNESTCLUB</span>
+<button class="text-white"><span class="material-symbols-outlined">menu</span></button>
+</header>
+<div class="flex-1 overflow-y-auto">
+<div class="max-w-[1400px] mx-auto p-6 md:p-10 flex flex-col gap-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-black dark:text-white text-3xl font-black tracking-[-0.03em] leading-tight">Product Management</h2>
+<p class="text-gray-500 dark:text-gray-400 font-medium">Manage your inventory, prices and product details</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 h-10 px-5 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-black text-sm font-bold transition-all">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-5 rounded-lg bg-black text-white hover:bg-gray-800 text-sm font-bold shadow-lg shadow-gray-200 dark:shadow-none transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Add Product</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-primary/30 shadow-sm relative overflow-hidden group">
+<div class="absolute right-0 top-0 h-20 w-20 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<span class="text-sm font-semibold uppercase tracking-wider">Total Products</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1 relative z-10">
+<p class="text-black dark:text-white text-3xl font-black tracking-tight">854</p>
+<span class="flex items-center text-green-600 text-sm font-bold bg-green-50 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>
+                            24 New
+                        </span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-primary/30 shadow-sm relative overflow-hidden group">
+<div class="absolute right-0 top-0 h-20 w-20 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-primary">category</span>
+<span class="text-sm font-semibold uppercase tracking-wider">Active Categories</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1 relative z-10">
+<p class="text-black dark:text-white text-3xl font-black tracking-tight">12</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-primary text-white shadow-lg shadow-primary/20 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-[#05054a]"></div>
+<div class="flex items-center gap-2 text-white/80 relative z-10">
+<span class="material-symbols-outlined text-white">warning</span>
+<span class="text-sm font-semibold uppercase tracking-wider">Low Stock</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1 relative z-10">
+<p class="text-white text-3xl font-black tracking-tight">18</p>
+<span class="text-white/80 text-sm font-medium">Items to Restock</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-900 border border-primary/30 shadow-sm relative overflow-hidden group">
+<div class="absolute right-0 top-0 h-20 w-20 bg-green-50 dark:bg-green-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-green-500">sell</span>
+<span class="text-sm font-semibold uppercase tracking-wider">Best Sellers</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1 relative z-10">
+<p class="text-black dark:text-white text-3xl font-black tracking-tight">56</p>
+<span class="flex items-center text-green-600 text-sm font-bold bg-green-50 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
+                            Top Tier
+                        </span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="relative w-full md:w-96">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-primary/30 rounded-lg leading-5 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-shadow" placeholder="Search by Product Name, SKU, or Category" type="text"/>
+</div>
+<div class="flex gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-semibold hover:bg-primary/10 transition-colors whitespace-nowrap">
+<span>Category: All</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors whitespace-nowrap">
+<span>Stock: Any</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>More Filters</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+<thead class="bg-gray-50 dark:bg-gray-800/50">
+<tr>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider w-16" scope="col">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</th>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Product</th>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Category</th>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Stock</th>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Price</th>
+<th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Status</th>
+<th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="group hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-md bg-gray-100 mr-3 flex items-center justify-center overflow-hidden border border-gray-200">
+<img alt="T-shirt" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7oweKJrxsdOmgLPIchSRijle_7EbTUdNw6pQBqLlD3t3QW9WNm2aF2L8CKeLA2QgE9fhEzWT-5bY3fmGw76CJxnI9EyTS3S07bTuXVV5LRjiCexi_Z7RsagrjI1B-gMw27CtwQPG9BKWhzKtRRe_hu7a-j5Ict2VOMAmT6I0UoqT0GKbVN8BvjjbHJu_dDzbv3FwSdGOVWY3aAheLBzmxNU142M2nyc8F-f5LVUUUqpOwq3XsJtuidXTyRyXzxw6ZGQpPNW1YwM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Neon Graphic Tee</span>
+<span class="text-xs text-gray-500">SKU: CRK-001-BLK</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">T-Shirts</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">124 in stock</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">$35.00</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80 font-bold mr-3">Edit</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px] align-middle">delete</span></button>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-md bg-gray-100 mr-3 flex items-center justify-center overflow-hidden border border-gray-200">
+<img alt="Hoodie" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6OkUl-nwu95RIN5ZNnmA52EZ44uKbPhBKdqO3e0cDID0aUIKsr-Q-lgtIsUTQkHCsSUzrFycMDp9rz9DfA76Kcwo4eVh8WAdNjJ0i55VVPTcYte6w9Pb_cFCIVcU6_pTBRPcoDmLikjBvCPSgOssFllvae8MyW0445ywvD31EuWHlCpwnuZ_fWpj8K29IT7OwDQtZB283X801DmJ7JLvpVCDC_8biilkiOJ3dW-zyK_fgEH2n6k7C9MAHmlK-uHuWjYOvYzp19jQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Cyberpunk Hoodie</span>
+<span class="text-xs text-gray-500">SKU: CRK-045-NVY</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hoodies</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+<div class="bg-red-500 h-1.5 rounded-full" style="width: 10%"></div>
+</div>
+<span class="text-xs font-medium text-red-600 dark:text-red-400">4 left</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">$65.00</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80 font-bold mr-3">Edit</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px] align-middle">delete</span></button>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-md bg-gray-100 mr-3 flex items-center justify-center overflow-hidden border border-gray-200">
+<img alt="Cap" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDolMNPHT1RhR33ZjeL1ahzIJqQy3J9xF1FrUTxE1emLrucb5DAHG6L5_0o48ouSjFaqWN5mJIE_raG8UWi7Cxtyu5n6itbTQYOFN7_m1_Utg9ARuAdAQxM4Xs_xW-O1HVGCLcu-d-ecp9dNt2Gd3xe92rrWQa4vu0ItFJAfKWv_UNqYkM95wkMIC6lfOjCnXbD4rOcbUICnK_DOP6fsjU8CUu4mEOv02HsaF0pifFHpPNk3_weChw8lyAS6XFpq1baX7dpZNP3HI8"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Snapback Cap</span>
+<span class="text-xs text-gray-500">SKU: CRK-092-WHT</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Accessories</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+<div class="bg-yellow-400 h-1.5 rounded-full" style="width: 30%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">15 in stock</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">$25.00</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-800 border border-yellow-200">
+                                    Low Stock
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80 font-bold mr-3">Edit</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px] align-middle">delete</span></button>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-md bg-gray-100 mr-3 flex items-center justify-center overflow-hidden border border-gray-200">
+<img alt="Shorts" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbjO8qT7zRTYRhBW2xu0oDVTqklM9K9qmIiPgNCjbEuLxaKXS12O7aDN9u_mMFF-IMiDr1nTA_doDArWk6EouPOpnrEbnUKrD9e_PT7E01EyJEld3u4XnYvurHVcb_hVQBv0zb2Iv6L10sUFZaKPJ_yCN1nCLUVO6rTr0q2XWbKyZCMTpFIKK2jpsQXDBQBYK5DMRJWgAoyQ1kJvgxvPKih3NxkVRYwzzrXFs4ZfJ5SO-t4KG4YdoY21AibHiNlp0g57JUAgk4xCI"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Summer Cargo Shorts</span>
+<span class="text-xs text-gray-500">SKU: CRK-112-KHA</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bottoms</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+<div class="bg-gray-400 h-1.5 rounded-full" style="width: 0%"></div>
+</div>
+<span class="text-xs font-medium text-gray-400">Out of Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">$45.00</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-600 border border-gray-200">
+                                    Draft
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80 font-bold mr-3">Edit</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px] align-middle">delete</span></button>
+</td>
+</tr>
+<tr class="group hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-10 w-10 rounded-md bg-gray-100 mr-3 flex items-center justify-center overflow-hidden border border-gray-200">
+<img alt="T-shirt" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZNpa9wjwLr6gPxixCtzpQoN2eoeijA4pqrdXDSEMS64UTmfWaLbmmcT4ToTiqYE_UPJI4ofHpwUfIk5TAfJouwCGBjIq13tl9mE33grs4u8lGL5vdk2r-dkJ7H8mu0awhgQh1gmixJ8aV1YEtlswqPci4JwufugEAl9BfraxKcS6tO2fsgv1lRFHt9Ob2a_XdbAlqBFYyoFkJyjRJ3LwfcJws0gAF1hwDGEYK5G2SVUvlOnRSeBpTBDzhwV2uPrqaAnFhHGyHeV0"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Vintage Print Tee</span>
+<span class="text-xs text-gray-500">SKU: CRK-005-WHT</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">T-Shirts</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-16 bg-gray-200 rounded-full h-1.5 mr-2">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">85 in stock</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">$32.00</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80 font-bold mr-3">Edit</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px] align-middle">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-white dark:bg-gray-900 px-4 py-3 flex items-center justify-between border-t border-gray-200 dark:border-gray-800 sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+                                Showing <span class="font-bold">1</span> to <span class="font-bold">5</span> of <span class="font-bold">854</span> results
+                            </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</a>
+<a aria-current="page" class="z-10 bg-primary/10 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-bold" href="#">1</a>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">2</a>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+<a class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#">8</a>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

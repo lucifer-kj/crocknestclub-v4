@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CROCKNESTCLUB - Returns &amp; Refunds</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d0df2",
+              "primary-dark": "#0a0abf",
+              "secondary": "#0d0d1c",
+              "background-light": "#f8f8fc",
+              "background-dark": "#101022",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+            boxShadow: {
+                'glow': '0 0 15px rgba(13, 13, 242, 0.15)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cecee8; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0d0df2; 
+        }
+    </style>
+</head>
+<body class="bg-background-light text-secondary antialiased min-h-screen flex flex-col">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#e7e7f4]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16 gap-4">
+<!-- Logo & Branding -->
+<div class="flex items-center gap-2">
+<a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl text-primary filled">bolt</span>
+<h1 class="text-xl font-black tracking-tighter uppercase">CROCKNESTCLUB</h1>
+</a>
+</div>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-secondary hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium text-secondary hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-sm font-medium text-secondary hover:text-primary transition-colors" href="#">Sale</a>
+<a class="text-sm font-medium text-secondary hover:text-primary transition-colors" href="#">Account</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<!-- Search Bar -->
+<div class="hidden sm:flex items-center bg-[#f0f0f5] rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary focus-within:bg-white transition-all border border-transparent focus-within:border-primary/20">
+<span class="material-symbols-outlined text-gray-500 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 placeholder-gray-500 text-secondary" placeholder="Search..." type="text"/>
+</div>
+<button class="p-2 text-secondary hover:text-primary transition-colors relative group">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<!-- Page Header -->
+<div class="mb-8 md:mb-12">
+<a class="inline-flex items-center text-gray-500 hover:text-primary text-sm font-medium mb-4 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg mr-1">arrow_back</span>
+                Back to Orders
+            </a>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl md:text-4xl font-black tracking-tight text-secondary mb-2">Start Your Return</h2>
+<p class="text-[#49499c] font-medium">Order #49281-CN • Placed on Oct 12, 2023</p>
+</div>
+<!-- Support Contact -->
+<div class="flex items-center gap-2 text-sm text-[#49499c] bg-blue-50 px-4 py-2 rounded-lg border border-blue-100">
+<span class="material-symbols-outlined text-primary text-lg">support_agent</span>
+                    Need help? <a class="font-bold text-primary underline decoration-primary/30 hover:decoration-primary" href="#">Contact Support</a>
+</div>
+</div>
+</div>
+<!-- Progress Stepper -->
+<div class="mb-10 max-w-3xl">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-bold text-primary">Step 2 of 3</span>
+<span class="text-sm font-medium text-gray-500">Refund Method</span>
+</div>
+<div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 rounded-full shadow-[0_0_10px_#0d0df2]"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-medium text-gray-400">
+<span class="text-primary">Selection</span>
+<span class="text-primary">Details</span>
+<span>Review</span>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative">
+<!-- Left Column: Form -->
+<div class="flex-1 flex flex-col gap-8">
+<!-- Section 1: Item Selection & Reason -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</div>
+<h3 class="text-xl font-bold text-secondary">Items to Return</h3>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Item Card 1 (Selected) -->
+<div class="bg-white rounded-xl border border-primary shadow-glow p-4 md:p-6 transition-all duration-200 relative overflow-hidden group">
+<!-- Selection Checkbox Area -->
+<div class="flex gap-4 items-start">
+<div class="flex-shrink-0 pt-1">
+<label class="relative flex items-center justify-center cursor-pointer group">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="size-6 border-2 border-gray-300 rounded peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-lg">check</span>
+</div>
+</label>
+</div>
+<!-- Product Info -->
+<div class="flex-1 flex flex-col sm:flex-row gap-4">
+<div class="size-20 bg-gray-100 rounded-lg bg-cover bg-center border border-gray-200" data-alt="Electric Blue Oversized Hoodie" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_n-HS9JxsuvLuE0PztAllJjOyf9ovm1oIIli6wAyh5WtC5B7WFzz1HZPliFFTrrTzB-aIC8C5aKv6MAMhn9QHXjJXRkM9m014xm2ExOhWzIbFNukOW-ONoZYmMQo9Ptwojm8YkFCJEl3XxYjCdMjShYJRac9Rkb5shwiKzmG_VLVxHSKyy6RHr04uFnuJ8TSB03Xz8-7gT4JCqcTpS-46akFf8a9btqM1iil0LLb4ghIKVkljFlnR7ix7aTXXJlvZtq1pJNtLYgY');"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-bold text-secondary text-lg leading-tight">Electric Blue Oversized Hoodie</h4>
+<p class="text-sm text-gray-500 mt-1">Size: L • Color: Black/Blue</p>
+</div>
+<p class="font-bold text-secondary">$65.00</p>
+</div>
+<!-- Expanded Reason Section (Only visible if selected) -->
+<div class="mt-6 pt-6 border-t border-dashed border-blue-100 animate-in fade-in slide-in-from-top-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-gray-500">Reason for return</label>
+<div class="relative">
+<select class="w-full bg-[#f8f8fc] border border-[#cecee8] rounded-lg px-4 py-2.5 text-sm font-medium text-secondary focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none cursor-pointer">
+<option>Select a reason...</option>
+<option selected="">Item was defective</option>
+<option>Size too small</option>
+<option>Size too large</option>
+<option>Changed my mind</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-500 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-gray-500">Condition</label>
+<div class="relative">
+<select class="w-full bg-[#f8f8fc] border border-[#cecee8] rounded-lg px-4 py-2.5 text-sm font-medium text-secondary focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none cursor-pointer">
+<option>Select condition...</option>
+<option selected="">Opened, unused</option>
+<option>Unopened</option>
+<option>Used/Worn</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-500 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Image Upload for Defects -->
+<div class="mt-4">
+<label class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Upload Photo Proof (Required for Defects)</label>
+<div class="border-2 border-dashed border-primary/30 hover:border-primary bg-blue-50/30 hover:bg-blue-50 transition-colors rounded-lg p-6 text-center cursor-pointer group/upload">
+<div class="flex flex-col items-center gap-2">
+<div class="size-10 rounded-full bg-white border border-blue-100 flex items-center justify-center shadow-sm group-hover/upload:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+</div>
+<p class="text-sm font-medium text-primary">Click to upload or drag and drop</p>
+<p class="text-xs text-gray-400">JPG, PNG up to 5MB</p>
+</div>
+</div>
+<!-- Uploaded Thumbnail Preview -->
+<div class="flex gap-2 mt-3">
+<div class="relative group/thumb">
+<img alt="Defect detail" class="size-16 object-cover rounded-md border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARurR2lh5Er06ovXsL0AHr1PmE54khRzAZAO9a7tc6W4mBNpTgDWTpAj7SzlhzAVnUM1o7mGUZkEG1W59TBAMaQvX_QvWQlY1yptSHX3oWE-4dP5oxjbgFCbxJ-TL3s2niS6wQ1u9O1_iv6opW4iAAFRh-OmDMZsOcc2uuRNfTkW8NqECZJJCZKoDuBzRrEbTbUfrxoCHMJ7owvPROGoMK--Q78GbIigBxpKYBIDVRj6BNyzqma-NylZzbNqfrdNGRFfkZAM0CXSA"/>
+<button class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-0.5 shadow-sm opacity-0 group-hover/thumb:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item Card 2 (Unselected) -->
+<div class="bg-white rounded-xl border border-[#e7e7f4] p-4 md:p-6 hover:border-primary/50 transition-all duration-200 opacity-80 hover:opacity-100">
+<div class="flex gap-4 items-center">
+<div class="flex-shrink-0">
+<label class="relative flex items-center justify-center cursor-pointer group">
+<input class="peer sr-only" type="checkbox"/>
+<div class="size-6 border-2 border-gray-300 rounded peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center text-white peer-focus:ring-2 peer-focus:ring-primary/20">
+<span class="material-symbols-outlined text-lg opacity-0 peer-checked:opacity-100">check</span>
+</div>
+</label>
+</div>
+<div class="size-16 bg-gray-100 rounded-lg bg-cover bg-center border border-gray-200" data-alt="Graphic Print Mesh Top" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0uFVCskMTbPNa0YYr4AA8_5HmMTs28WgmlsfEpjqrya1rE6yhzL87lo4eomFmfN3JKtu0FtQu6k3TjvFvbP-o26iDhy_2V2p8SZKJ4I9IHCmCvEtFR8spU6UDuBn8jh8kYvimr3lutu2c0fieRnfhJQDTror4zOpa7Gm_se_R6nx7U6CvZeReNbAf9ObEfkgXKi5Hh3qr6BgosBVvwoZw9SjndnarZXXMkUOVm6rT22OU9gopEjy5P-WvyiAb9ak_8rJfG7UTGuY');"></div>
+<div class="flex-1">
+<h4 class="font-bold text-secondary text-base">Graphic Print Mesh Top</h4>
+<p class="text-sm text-gray-500">Size: M • Color: White</p>
+</div>
+<p class="font-medium text-gray-500">$35.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Refund Method -->
+<section class="mt-4">
+<div class="flex items-center gap-3 mb-4">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</div>
+<h3 class="text-xl font-bold text-secondary">Refund Method</h3>
+</div>
+<div class="grid md:grid-cols-2 gap-4">
+<!-- Option 1: Store Credit (Incentivized) -->
+<label class="cursor-pointer group relative">
+<input checked="" class="peer sr-only" name="refund_method" type="radio"/>
+<div class="h-full bg-white border-2 border-primary rounded-xl p-5 relative overflow-hidden transition-all shadow-glow peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-primary/50">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Recommended</div>
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<div>
+<h4 class="font-bold text-secondary text-lg">Store Credit</h4>
+<p class="text-sm text-gray-500 mt-1">Get your refund instantly to your account wallet.</p>
+<div class="mt-3 inline-flex items-center gap-1.5 bg-gradient-to-r from-secondary to-gray-800 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm text-yellow-400 filled">bolt</span>
+                                            Includes +$5.00 Bonus Credit
+                                        </div>
+</div>
+</div>
+</div>
+<!-- Selection Indicator -->
+<div class="absolute top-5 right-5 hidden peer-checked:block">
+<span class="material-symbols-outlined text-primary text-2xl filled">check_circle</span>
+</div>
+</label>
+<!-- Option 2: Original Payment -->
+<label class="cursor-pointer group relative">
+<input class="peer sr-only" name="refund_method" type="radio"/>
+<div class="h-full bg-white border border-[#cecee8] hover:border-gray-400 rounded-xl p-5 relative transition-all peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary">
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div>
+<h4 class="font-bold text-secondary text-lg">Original Payment</h4>
+<p class="text-sm text-gray-500 mt-1">Refund to Visa ending in 4242.</p>
+<p class="text-xs text-gray-400 mt-2">Takes 3-5 business days to process.</p>
+</div>
+</div>
+</div>
+<div class="absolute top-5 right-5 text-gray-300 peer-checked:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl peer-checked:filled">check_circle</span>
+</div>
+</label>
+</div>
+</section>
+<div class="h-10"></div> <!-- Spacer -->
+</div>
+<!-- Right Column: Summary Sticky -->
+<div class="lg:w-[360px] flex-shrink-0">
+<div class="sticky top-24 space-y-4">
+<div class="bg-white rounded-xl border border-[#e7e7f4] shadow-sm overflow-hidden">
+<div class="p-5 border-b border-[#f0f0f5]">
+<h3 class="font-bold text-secondary text-lg">Return Summary</h3>
+</div>
+<div class="p-5 space-y-4">
+<!-- Selected Item Row -->
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="bg-primary/10 text-primary text-xs font-bold px-1.5 py-0.5 rounded">1x</span>
+<span class="text-gray-600 truncate max-w-[140px]">Blue Oversized Hoodie</span>
+</div>
+<span class="font-medium">$65.00</span>
+</div>
+<!-- Calculations -->
+<div class="pt-4 border-t border-dashed border-gray-200 space-y-2">
+<div class="flex justify-between text-sm text-gray-500">
+<span>Subtotal</span>
+<span>$65.00</span>
+</div>
+<div class="flex justify-between text-sm text-gray-500">
+<span>Return Shipping</span>
+<span class="text-primary font-medium">FREE</span>
+</div>
+<div class="flex justify-between text-sm text-secondary font-medium">
+<span>Store Credit Bonus</span>
+<span class="text-green-600">+$5.00</span>
+</div>
+</div>
+<!-- Total -->
+<div class="pt-4 border-t border-[#f0f0f5]">
+<div class="flex justify-between items-end">
+<span class="text-sm font-bold text-gray-500">Estimated Refund</span>
+<span class="text-2xl font-black text-primary tracking-tight">$70.00</span>
+</div>
+<p class="text-xs text-gray-400 mt-1 text-right">To Store Credit Wallet</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-5 pt-0">
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-lg shadow-lg shadow-blue-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                                Review Return
+                                <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</button>
+<p class="text-xs text-center text-gray-400 mt-3 px-2">
+                                By continuing, you agree to our <a class="underline hover:text-secondary" href="#">Return Policy</a>.
+                            </p>
+</div>
+</div>
+<!-- Trust Signals -->
+<div class="bg-[#e7e7f4]/50 rounded-lg p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-gray-400">verified_user</span>
+<div class="text-xs text-gray-500 leading-relaxed">
+<span class="font-bold text-secondary">Secure Process.</span> Your refund will be initiated immediately upon drop-off scan at any partner location.
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="bg-white border-t border-[#e7e7f4] mt-auto">
+<div class="max-w-7xl mx-auto px-4 py-8 md:flex md:items-center md:justify-between">
+<div class="text-sm text-gray-400">
+                © 2023 CrockNestClub. All rights reserved.
+            </div>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="text-sm text-gray-500 hover:text-primary" href="#">Terms</a>
+<a class="text-sm text-gray-500 hover:text-primary" href="#">Privacy</a>
+<a class="text-sm text-gray-500 hover:text-primary" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CROCKNESTCLUB - Search Results</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2", // Deep Electric Blue
+                        "primary-dark": "#0a46c0",
+                        "secondary": "#000000",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101622",
+                        "border-accent": "#0d59f2",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", 
+                        "md": "0.375rem",
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 10px rgba(13, 89, 242, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background-color: #ffffff;
+            color: #0d121c;
+        }
+        
+        /* Custom scrollbar for modern feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        .highlight-text {
+            color: #0d59f2;
+            background: rgba(13, 89, 242, 0.05);
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            border-color: #0d59f2;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(13, 89, 242, 0.15);
+        }
+
+        .icon-btned:hover span {
+             font-variation-settings: 'FILL' 1;
+             color: #0d59f2;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-secondary antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8">
+<div class="flex items-center justify-between h-20 gap-8">
+<!-- Logo & Hamburger (Mobile) -->
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 -ml-2 text-secondary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 text-primary transition-transform group-hover:rotate-12">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-secondary text-xl font-extrabold tracking-tight">CROCKNESTCLUB</h2>
+</a>
+</div>
+<!-- Search Bar (Desktop) -->
+<div class="hidden md:flex flex-1 max-w-lg">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg leading-5 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all duration-200" placeholder="Search for apparel..." type="text" value="Cyber-Y2K"/>
+</div>
+</div>
+<!-- Right Nav Actions -->
+<div class="flex items-center gap-1 md:gap-4">
+<div class="hidden lg:flex items-center gap-6 mr-4">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Shop All</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">New Drops</a>
+<a class="text-sm font-semibold text-red-600 hover:text-red-700 transition-colors" href="#">Sale</a>
+</div>
+<button class="icon-btned p-2 rounded-full hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+</button>
+<button class="icon-btned p-2 rounded-full hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</button>
+<button class="icon-btned p-2 rounded-full hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined text-[24px]">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex-grow">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex mb-6 text-sm font-medium text-gray-500">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><span class="text-gray-300">/</span></li>
+<li><span aria-current="page" class="text-secondary font-semibold">Search Results</span></li>
+</ol>
+</nav>
+<!-- Headline & Query Summary -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-secondary mb-2">
+                        Results for '<span class="text-primary decoration-4 decoration-primary/20 underline-offset-4">Cyber-Y2K</span>'
+                    </h1>
+<p class="text-gray-500 font-medium">Showing 48 products</p>
+</div>
+<!-- Sort Dropdown (Desktop) -->
+<div class="hidden md:block relative">
+<button class="flex items-center justify-between w-48 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+<span class="text-sm font-semibold">Sort by: Featured</span>
+<span class="material-symbols-outlined text-gray-400">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Filters & Chips -->
+<div class="sticky top-20 z-30 bg-white/95 backdrop-blur py-4 mb-6 border-b border-gray-100 -mx-4 px-4 md:px-0 md:mx-0 md:border-none md:bg-transparent">
+<div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide md:flex-wrap">
+<!-- Filter Toggle Button -->
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-full hover:bg-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="text-sm font-bold">Filters</span>
+</button>
+<div class="h-6 w-px bg-gray-200 mx-1 shrink-0"></div>
+<!-- Filter Chips -->
+<button class="group flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full hover:border-primary hover:bg-primary/5 transition-all shrink-0">
+<span class="text-sm font-medium group-hover:text-primary">Price Range</span>
+<span class="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-primary">expand_more</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full hover:border-primary hover:bg-primary/5 transition-all shrink-0">
+<span class="text-sm font-medium group-hover:text-primary">Size</span>
+<span class="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-primary">expand_more</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full hover:border-primary hover:bg-primary/5 transition-all shrink-0">
+<span class="text-sm font-medium group-hover:text-primary">Color</span>
+<span class="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-primary">expand_more</span>
+</button>
+<!-- Active Filter Pill Example -->
+<button class="flex items-center gap-1 pl-3 pr-2 py-2 bg-primary/10 border border-primary/20 rounded-full shrink-0">
+<span class="text-sm font-bold text-primary">In Stock</span>
+<span class="material-symbols-outlined text-[18px] text-primary hover:bg-primary/10 rounded-full p-0.5">close</span>
+</button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12">
+<!-- Product Card 1 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<!-- Wishlist absolute -->
+<button class="absolute top-5 right-5 z-10 p-2 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white hover:text-red-500 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Model wearing Y2K style hoodie" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgFJXAq4S54jHuOXmvrnlz0tacu9rtNeo5k3XKKHns8m4fc3GesocqlzJdFe0gG3cb19H8ETkDCN4HO9tgZ14bKUJxtIWD9dKJvYu7Y56_QWv7XVvKdahKDE7B7-KCc_jPxj_U8XijAEVDeixJf8mSXId0JT2L0dqmxDS6oJ8rOcnOpj9BaaNzM6DS8M9qudnfrYNUKL48OXBwogmeethPdlekpmOD-TuiOl1KCVmM4z7jBOWBzpfeqGhpqL96MXpOP5XBXmWxOac');"></div>
+<!-- Quick Add Overlay -->
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+<span class="highlight-text">Cyber-Y2K</span> Graphic Hoodie
+                            </h3>
+</div>
+<p class="text-sm text-gray-500 mb-2">Oversized Fit</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$45.00</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-full bg-black border border-gray-300"></div>
+<div class="w-3 h-3 rounded-full bg-blue-600 border border-gray-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<!-- Sale Badge -->
+<span class="absolute top-5 left-5 z-10 bg-black text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">Sale</span>
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Acid wash oversized tee" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGGEjW-hoK361bgvkoG8kt8cM1SZHeLwWnJHS8_vfAO8kqUkuRKcHOkl_fgK4GzfF2MtD3BTPGgLMbtzRMRPEjricLEXkwMZpPUBHiclk-hETEZ6c_W_vq3tMbdQT2htJfdu69v1XMUZ2qEuMqlwe5T4JhUHXduVYt5BMys0aMcGHDUcpWAs8qOrQe82Mm1ZDgnKyA3kOb_bgcPFG_jx0jJF8WEy7qSmHuzby-uxdPkqTeWpUWFURoCFXKvcywGfziVTcU0Ie71xQ');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Acid Wash Vintage Tee
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">100% Cotton</p>
+<div class="mt-auto flex items-center gap-2">
+<span class="text-lg font-bold text-red-600">$28.00</span>
+<span class="text-sm text-gray-400 line-through">$35.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Electric blue joggers on model" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtuZv5Afzn7YcVLWVtH5vKJlptQbBa0ixdYq9StdgkyomhpnwAGvSEPOZqBfDi25iZ_cBCtFZXl6i6Mj5j1Sw7g3yRqyvNmL-AVhgmY0oNYoc-BSGuMafnppt2fNZ7b12Axwn-Pl09quW2eKPmCS43XmH46ruYQF5d9IvH-_EjSqQEJzqypC5oNSIqBXMOdUtaoyk6KdsQWZNIwto_wn1hSljH7Nki12JUIZ0p3qzt7_BLoZBIgsy96Wa0l9Tg8w75_OMyHoX3ncI');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Electric Blue Joggers
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Unisex</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$35.00</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-full bg-blue-600 border border-gray-300 ring-1 ring-offset-1 ring-blue-600"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<span class="absolute top-5 left-5 z-10 bg-primary text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">New</span>
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Distressed denim jacket back view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBiMXtoJvPnrpwO_7iIYb_NBWr4doqi0iiQFSDcXMnqYc4zig84iEtHyHRQ6nefn_d4xtP9ZBi3KiT8QiQS8YabBoYz9SRa1_C_iIAgCdptY1Qvr3SyopadJSY1SJLhmjH11dBD-K5rX1KkYbuWNm0hkN5x5gX8Ob57t4ulyidLbgyCwCmQJcMjO5XclYSv8LaHKu3uycDiAMuJSLFuoLVj2_aLqvPd0aewbS07LFs1MK9vWVqmtP_cpEo86fTFN1yIsZHDNsLY8aE');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Distressed Denim Jacket
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Outerwear</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$55.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Graphic print t-shirt black" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwOtZm5rERehY_mxD6SSmdTax3By3pEc02vKBaHRmydLDxrhQifyyMtRQQahphHcoZqIkGHI8n_zGFRqzRIZ-Vcc6buctXFxnxmE7vzB43HtoHppla_J69uPMbyS6f94STH-5OMgMDFSr9DmzFtWgxr4FA1gC6dv7SIG8yuLTLDXYnCnzslb2Z0OBWqdKO5eEF-BK3r3_6Uy8otNW4wN57THPx0DyRSBmxf_lhwSbNTz_HL98a5rKtOUxubtJEkcqrcK3mE_i0m4Q');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            "Matrix" Code Tee
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Graphic Collection</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$32.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Black cargo pants" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYnLKUh5sdr1OzOeOY13EnbptocQLpSQGiIcSfP5m9At0aL6qN86_DhaRjMFAlCHdabhsArUEZUBBV2GOxlKUGij0KTChsscWfLU2-Q43nOnyaFT4r9lr0RYFvyZ72NOggtw5A89Ww4ylrQejCw9MF5z4-835XK370HFfwBeyoQaQyEGW5GXglQejwYdTrbwb00Zn-DfeyNN660izrdew8h36G3tD_SfhpGl5bDoyxU4vUZsaU06mJvC-XXezfTljMl836cy4W_hM');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Utility Cargo Pants
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Techwear</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$65.00</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-full bg-black border border-gray-300"></div>
+<div class="w-3 h-3 rounded-full bg-stone-500 border border-gray-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 7 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Black oversized t-shirt simple" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0g4Az51gmUEs2UpRumPcYunptgUn4xDaUVLoUlMZmYL30GSxRgjONJ8LXtJYLWz5Cfe-cEpstO4n5A-5JKQoJUD1XeUw9qISu0jUXEJ4V3_OL_zR780EwU30kb-qnGdQjvpnvuwdH413xV_7NiNm3Qh4QMC40SqtEue4nOwK7HbGqNeYE_ZHu3hxSjT-lini-IE51LRgZ_CmbYDeiGXeyWyOcgeZZDpCWOF38xuz6p3wJ62yqn1Vh6G8n1OMmxMkv1I8I8y3RLLg');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Basic Boxy Tee
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Essentials</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$24.00</span>
+</div>
+</div>
+</div>
+<!-- Product Card 8 -->
+<div class="group card-hover-effect flex flex-col h-full bg-white rounded-xl border border-transparent p-3 relative">
+<div class="relative w-full aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden mb-4">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Model wearing beanie and flannel shirt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB90QmYoPSxGHFgm5G4no2xlm-wrTW5E73dz54xIVtFoliEUNEFeVw82OaR87OOlTGTRYF-v7LNcBs971CVgrB5BLp6cRhBtHUlibq8pj4WMNUIllbQzHDp1UGLo8W3-xbEas7IUvJXYDxPt5u6mb3wO07nsQLJdVVaQZ2Mvzl_PlpwFaPf8r1Ge8vOaavCM-eg_yCIiTDZJyUSNa-SEO9JCIR_5nlZWzIy5x7kjmdcOSyeULNP3FqDGzxCPuX0LSDBrDX-I2zlMJw');"></div>
+<div class="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-primary text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Quick Add
+                             </button>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-base font-bold text-secondary leading-tight group-hover:text-primary transition-colors">
+                            Checkered Flannel
+                        </h3>
+<p class="text-sm text-gray-500 mb-2">Layering</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-secondary">$48.00</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-full bg-red-600 border border-gray-300"></div>
+<div class="w-3 h-3 rounded-full bg-green-700 border border-gray-300"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex justify-center">
+<button class="bg-gradient-to-r from-secondary to-[#1a1a1a] hover:from-primary hover:to-primary-dark text-white font-bold py-4 px-12 rounded-lg transition-all shadow-lg hover:shadow-glow transform hover:-translate-y-1">
+                    Load More Products
+                </button>
+</div>
+<!-- "Empty State" Simulation Section (As 'You Might Also Like') -->
+<div class="mt-24 pt-12 border-t border-gray-100">
+<div class="flex flex-col items-center text-center mb-10 max-w-2xl mx-auto">
+<div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-gray-400 text-3xl">sentiment_satisfied</span>
+</div>
+<h2 class="text-2xl font-bold text-secondary mb-2">Not finding the vibe?</h2>
+<p class="text-gray-500">Check out these trending collections that everyone is talking about.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative h-48 rounded-lg overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Abstract fashion pattern background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDufLTqzcQmaviiDFqwCJfgkcPNJfrguqmYs9QCQkQSwHIT7QjITNivd0p9xZWpWSXZLVQ99H4OSIsObY8wPP_0HgS-HIaH49WQc7NKkOx2E-FYtfaj_nagy01QedaDD0GCVFtOmkteUN7vXFdMwXvY2_F_GvUzFBrdIuTS26yqYdhyxTJwYIfNDvT9jYFWVW9ELvsmlZbzxxLzXtWOBtQthwZWYhH-FSv6Bq2ClwcfVsBw-IIvTnyasJU-8g_CzScu7c-OzTiACWo');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<h3 class="text-white text-2xl font-bold tracking-wider border-b-2 border-transparent group-hover:border-white transition-all pb-1">BEST SELLERS</h3>
+</div>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close up of fabric texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDczGJDr_J55P2BqM8Xkm2etDq3nwPGWs4OhDwZDI2p6VeS1uzAUyEhnPnLxO1JtPHmh2YNTgXp-Q2ouUFPrQGWMKMpps2dFDmtUtMfrcxIUwK-mRoliiEoFAqzyvcFM7ICFtSItuG2sr8fw3_EU-xBKHcS0ZRx06naxu38evni6snVRLGsCWFSDFMFYHuFoiqMmQEUoPKewzQlIhCnQGduIWGX9xK8Td4IljT2KtIWtkOKqmAjznU6podDJwWg0F7yuTLlAhyS2wU');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<h3 class="text-white text-2xl font-bold tracking-wider border-b-2 border-transparent group-hover:border-white transition-all pb-1">ACCESSORIES</h3>
+</div>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Streetwear model group shot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuxRGv7WaSHXiwtKdZp9pd3m4DQhn-yU5nXMl6hUZpt1OvGsztWGJEf06_fFNUEiZlDVyxm7QC966fqcSbFel_hf-agbzb6o3-7rYC3E8eJSu49BlUEwwfZTnncoOszr-AmoiRhVEtY1ZGEzKcQurXMplewcfiGlJhasNSe2k2RxX4raGJ-lFgjFpNyXWOIH9k3UBqL0KSTkT0sc6TnD-t_act0topWieW_Jjmkl0eFE5i_Euf7RAjElpi0gYGfkXQCBzZix_Hkzs');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-primary/40 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<h3 class="text-white text-2xl font-bold tracking-wider border-b-2 border-transparent group-hover:border-white transition-all pb-1">NEW ARRIVALS</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="bg-black text-white mt-20 py-12 border-t-4 border-primary">
+<div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<h2 class="text-2xl font-extrabold tracking-tight">CROCKNESTCLUB</h2>
+<div class="flex gap-6 text-sm text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Shipping</a>
+</div>
+<div class="text-gray-500 text-sm">
+                © 2024 CrockNestClub. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

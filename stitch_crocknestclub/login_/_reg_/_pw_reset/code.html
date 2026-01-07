@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CROCKNESTCLUB - Authentication</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0b19da",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101122",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a1c2e",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #000000 0%, #0b19da 100%)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display text-slate-900 transition-colors duration-200">
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-background-light/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">diamond</span>
+</div>
+<h1 class="text-xl font-extrabold tracking-tight text-slate-900">CROCKNESTCLUB</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">About</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg border border-gray-200 px-4 py-2 text-sm font-bold transition-colors hover:bg-gray-100">
+                    Help
+                </button>
+</div>
+</div>
+</header>
+<main class="relative flex flex-col items-center justify-center min-h-[calc(100vh-64px)] w-full p-6 lg:p-12 gap-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-[1400px] w-full">
+<div class="flex flex-col w-full bg-surface-light border border-primary/20 rounded-2xl shadow-xl overflow-hidden relative group">
+<div class="h-1 w-full bg-gradient-to-r from-primary to-slate-900"></div>
+<div class="p-8 flex flex-col gap-6 relative z-10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Login</span>
+</div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900">Welcome Back</h2>
+<p class="text-slate-500">Log in to access your unique collection.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-all">
+<img alt="Google" class="w-5 h-5" data-alt="Google Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWK_6tVW-9J5oPVUL_NuojACIGZ1v2wEWF1QX5eYsvKMyRgKOEXC4dG9_2lW-wxqZDzkFdUmBpxlyUpnrQKw0omeQnAj7ZVx8uxcg4kZbPk4FK8Zicf-eu5bZpFgBAzh5vwlli-zZ0zXifS2CI_FMOKjxBJWGU-qi2p6Ih023wrW_hMHa_DK-F9D6c4zJIhzbjo03LOb_F4YhqL7kYP27_R2gfkv1EOVFZbKC9IuZyNCiEF2Md27dau5mwtkw2WNsnYGQAx_3qJHc"/>
+<span class="text-sm font-bold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-all">
+<span class="material-symbols-outlined text-xl">ios</span>
+<span class="text-sm font-bold">Apple</span>
+</button>
+</div>
+<div class="relative flex items-center justify-center">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+<span class="relative bg-surface-light px-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Or</span>
+</div>
+<form class="flex flex-col gap-4">
+<label class="space-y-2">
+<span class="text-sm font-bold text-slate-700">Email Address</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">mail</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" placeholder="name@example.com" type="email"/>
+</div>
+</label>
+<label class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold text-slate-700">Password</span>
+<a class="text-xs font-bold text-primary hover:text-primary/80" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">lock</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" placeholder="••••••••" type="password"/>
+</div>
+</label>
+<button class="mt-4 w-full h-12 rounded-lg bg-gradient-to-r from-slate-900 to-primary hover:from-black hover:to-blue-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-primary/20 transition-all transform active:scale-[0.98]" type="button">
+                            SIGN IN TO THE NEST
+                        </button>
+</form>
+<p class="text-center text-sm text-slate-500">
+                        Not a member yet? <a class="font-bold text-primary hover:underline" href="#">Create an account</a>
+</p>
+</div>
+</div>
+<div class="flex flex-col w-full bg-surface-light border border-primary/20 rounded-2xl shadow-xl overflow-hidden relative">
+<div class="h-1 w-full bg-gradient-to-r from-primary to-slate-900"></div>
+<div class="p-8 flex flex-col gap-6 relative z-10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary/50"></span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Register</span>
+</div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900">Join the Club</h2>
+<p class="text-slate-500">Get exclusive access to the latest drops.</p>
+</div>
+<form class="flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<label class="space-y-2">
+<span class="text-xs font-bold text-slate-700 uppercase">First Name</span>
+<input class="w-full h-12 px-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" type="text"/>
+</label>
+<label class="space-y-2">
+<span class="text-xs font-bold text-slate-700 uppercase">Last Name</span>
+<input class="w-full h-12 px-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" type="text"/>
+</label>
+</div>
+<label class="space-y-2">
+<span class="text-xs font-bold text-slate-700 uppercase">Email</span>
+<input class="w-full h-12 px-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" type="email"/>
+</label>
+<label class="space-y-2">
+<span class="text-xs font-bold text-slate-700 uppercase">Password</span>
+<input class="w-full h-12 px-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" type="password"/>
+</label>
+<div class="flex items-start gap-3 mt-2">
+<input class="mt-1 rounded border-primary text-primary focus:ring-primary bg-transparent" id="newsletter" type="checkbox"/>
+<label class="text-xs text-slate-500 leading-normal" for="newsletter">
+                                I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                            </label>
+</div>
+<button class="mt-4 w-full h-12 rounded-lg bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-sm tracking-wide transition-all transform active:scale-[0.98]" type="button">
+                            CREATE ACCOUNT
+                        </button>
+</form>
+</div>
+</div>
+<div class="flex flex-col w-full bg-surface-light border border-primary/20 rounded-2xl shadow-xl overflow-hidden relative">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="p-8 flex flex-col h-full relative z-10">
+<div class="mb-auto">
+<div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="material-symbols-outlined text-sm text-primary">lock_reset</span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Recovery</span>
+</div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 mb-3">Forgot Password?</h2>
+<p class="text-slate-500 mb-8">
+                            Don't worry, it happens to the best of us. Enter your email below to recover your account.
+                        </p>
+<form class="flex flex-col gap-6">
+<label class="space-y-2">
+<span class="text-sm font-bold text-slate-700">Registered Email</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">alternate_email</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-lg bg-white border border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 placeholder:text-slate-400 text-sm transition-all" placeholder="name@example.com" type="email"/>
+</div>
+</label>
+<button class="w-full h-12 rounded-lg bg-gradient-to-r from-slate-900 to-primary hover:from-black hover:to-blue-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-primary/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2" type="button">
+<span>SEND RESET LINK</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-200">
+<button class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                            Back to Login
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-[1400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group mt-8">
+<div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10 flex flex-col justify-center px-8 md:px-16">
+<h3 class="text-3xl md:text-5xl font-black text-white max-w-lg leading-tight uppercase italic">
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Wear Your</span> <br/>
+<span class="text-primary drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Attitude</span>
+</h3>
+<p class="mt-4 text-gray-300 max-w-md font-medium">Join 50,000+ members in the Crocknest Club. Exclusive drops, early access, and members-only pricing.</p>
+</div>
+<img alt="Models wearing trendy streetwear in neon lighting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Abstract vibrant streetwear fashion photography with neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhlfjoZxSqdVjyaY2FOyfs-j3VeZC7P_KOIEwgy1K-4HNYnNgAHMMrLHgXobTilFf_9UzqbJuXz-75ZEyaLgYkbNm5I4_voqKIcXFqpbEKXqLhD2WlDinagGhnf1zj_iH3mcEVy6XqjxCMi0KaMJGEtcTmresXG4Y5sH3lHocs4dZEhhsDUff1HlfWzSDYgI4wI5idAh3z3aMcjtQqOyYTJi7zChq946LzLsUijblDq3YrkCb8BHaLoKGR3qLwXJIYypwPJ1uvtjg"/>
+</div>
+</main>
+<footer class="w-full border-t border-gray-200 py-8 bg-background-light">
+<div class="mx-auto flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl px-4 sm:px-6 lg:px-8">
+<p class="text-sm text-slate-500">© 2024 CROCKNESTCLUB. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+</body></html>

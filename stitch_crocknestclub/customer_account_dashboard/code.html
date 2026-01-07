@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CrockNestClub - Customer Account Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2", // Electric Blue
+                        "primary-dark": "#0b6bcb",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101922", // Deep charcoal/black
+                        "card-dark": "#16212e",
+                        "border-dark": "#1f2d3d",
+                        "accent-dark": "#0d7ff2", // Matching primary
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "glow": "0 0 15px -3px rgba(13, 127, 242, 0.3)",
+                        "glow-sm": "0 0 8px -2px rgba(13, 127, 242, 0.4)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0d7ff2; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-[#111418] font-display antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-[#e5e7eb] bg-white backdrop-blur-md">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 text-primary group-hover:text-primary transition-colors">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path>
+</svg>
+</div>
+<span class="text-xl font-extrabold tracking-tight uppercase text-gray-900">CROCK<span class="text-primary">NEST</span>CLUB</span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors" href="#">New Drops</a>
+<a class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors" href="#">Men</a>
+<a class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors" href="#">Women</a>
+<a class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors" href="#">Sale</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block w-64">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full bg-gray-100 text-sm rounded-lg pl-10 pr-4 py-2 border-none focus:ring-2 focus:ring-primary text-gray-900 placeholder-gray-500" placeholder="Search collection..." type="text"/>
+</div>
+<button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+<div class="size-9 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
+<div class="w-full h-full bg-cover bg-center" data-alt="User Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWwbSOFhHAtAwd3KPYSxGXeuUTljvmn0e-U2B9oTuZiesP73_q91SWrNbwJTZg4XtcBP_gcCy5cgK_VV5v1bvlGmQxC9Grcw-WGgZVM4BzI6HwEuYrL_wvBAaY28lSb7ZDW1Q1BFL_ewkRA-XkN2ME8uhtH_9b5Ys6qTOdXNeZ-AaKSrH1Hfyyr3U6q4VPonDMeucnv5XOEKUKt8I9ichi7PE12Cbq5TDFPIo4kU5ZvzNxpLhuZEmRnHmS1N2GZoBb1GwCETG08oE');"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="sticky top-24 bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+<div class="flex items-center gap-3 mb-6 p-2">
+<div class="size-12 rounded-full overflow-hidden ring-2 ring-primary ring-offset-2 ring-offset-white">
+<div class="w-full h-full bg-cover bg-center" data-alt="User profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmF8O5icZ1gei4ZOlMHgqxJgkL-pyghsKNOCi48csvi_KBBZWshMF1J6jsqJa0xAyz_5wF4GDCpLFmg7scfLs01xqF9ONDLZwUj2GCgLAkGoMCIuvPsbBhK5mrVlTKbKzS-SGZMnCG6rYfJSjC7BjLOp2GcnoJbFLAzGugWQgfHMq0Qnl_Sa4dEQczRfmF5Z4zoDgl4mSwjMAZCbqU8GVygAP17CcdNHQgLzSVmMB0R8ICBG076fged-qBrRtRmLHKiU64hq365oU');"></div>
+</div>
+<div>
+<h3 class="font-bold text-sm leading-tight text-gray-900">Alex Doe</h3>
+<p class="text-xs font-medium text-primary">Gold Tier Member</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold transition-colors border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined filled">dashboard</span>
+                            Dashboard
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">package_2</span>
+                            My Orders
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">favorite</span>
+                            Wishlist
+                            <span class="ml-auto bg-gray-100 text-xs px-2 py-0.5 rounded-full">12</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">location_on</span>
+                            Addresses
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">credit_card</span>
+                            Payment Methods
+                        </a>
+<div class="h-px bg-gray-200 my-2"></div>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+                            Logout
+                        </a>
+</nav>
+</div>
+</aside>
+<div class="flex-1 min-w-0 space-y-6">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-50 via-white to-gray-50 border border-blue-100 p-8 shadow-glow-sm">
+<div class="absolute top-0 right-0 p-12 opacity-10">
+<span class="material-symbols-outlined text-[180px] text-primary rotate-12">local_mall</span>
+</div>
+<div class="relative z-10">
+<h1 class="text-3xl font-extrabold text-gray-900 mb-2">Welcome back, Alex! ⚡️</h1>
+<p class="text-gray-600 mb-6 max-w-lg">You're rocking the Gold Tier. You've earned <span class="text-primary font-bold">1,250 points</span> which can be redeemed for a $50 coupon.</p>
+<div class="flex flex-wrap gap-3">
+<button class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-glow hover:shadow-glow-sm flex items-center gap-2">
+                                View Rewards
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 px-5 py-2.5 rounded-lg font-bold text-sm transition-all">
+                                Edit Profile
+                            </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-white p-5 rounded-xl border border-gray-200 flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 rounded-lg text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<span class="text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded">+2 this month</span>
+</div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Total Orders</p>
+<h3 class="text-2xl font-bold text-gray-900">24</h3>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-gray-200 flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 rounded-lg text-purple-600">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded">In Transit</span>
+</div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Active Shipment</p>
+<h3 class="text-2xl font-bold text-gray-900">#ORD-9281</h3>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-gray-200 flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-50 rounded-lg text-amber-600">
+<span class="material-symbols-outlined">loyalty</span>
+</div>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">Gold</span>
+</div>
+<div>
+<p class="text-sm text-gray-500 font-medium">Loyalty Points</p>
+<h3 class="text-2xl font-bold text-gray-900">1,250</h3>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-6 border-b border-gray-200 flex flex-wrap items-center justify-between gap-4">
+<h2 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                            Recent Orders
+                        </h2>
+<a class="text-sm font-bold text-primary hover:text-primary-dark flex items-center gap-1" href="#">
+                            View All History
+                            <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-gray-50">
+<tr>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-gray-500">Order ID</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-gray-500">Date</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-gray-500">Status</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-gray-500">Total</th>
+<th class="p-4 text-xs font-bold uppercase tracking-wider text-gray-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 text-sm">
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="p-4 font-mono font-medium text-gray-900">#CN-29381</td>
+<td class="p-4 text-gray-600">Oct 24, 2023</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-primary border border-blue-200">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                            Shipped
+                                        </span>
+</td>
+<td class="p-4 font-bold text-gray-900">$124.00</td>
+<td class="p-4 text-right">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="p-4 font-mono font-medium text-gray-900">#CN-29304</td>
+<td class="p-4 text-gray-600">Sep 12, 2023</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-50 text-green-600 border border-green-200">
+                                            Delivered
+                                        </span>
+</td>
+<td class="p-4 font-bold text-gray-900">$89.50</td>
+<td class="p-4 text-right">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-gray-50 transition-colors">
+<td class="p-4 font-mono font-medium text-gray-900">#CN-28991</td>
+<td class="p-4 text-gray-600">Aug 05, 2023</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-50 text-green-600 border border-green-200">
+                                            Delivered
+                                        </span>
+</td>
+<td class="p-4 font-bold text-gray-900">$210.00</td>
+<td class="p-4 text-right">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white rounded-xl border border-gray-200 p-6">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-gray-900">Saved Items</h2>
+<button class="text-primary text-sm font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200 group cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Abstract blue graphic t-shirt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCH4SgtNzViB_zFqBCuLUh0mEKL6jTM9M8yg6m4cayb9OVGEaDuYPMuwdyruViBCCc6FGn0rSgUmru1dTL1vWLVd1xXhOjEJLZGqv7D0gZHUD0RgIyc_Xvqzav8vFOGL3nJYqoNQcxmaaHeuIOC9Kcxc2Y-ltUm9LIjWD8Pu3N5OJkfhro83JSHC3i_gU9cGYVrbD3G36QNxGeDM_qpBTMewA0dXIW8hDuHJnJ2h0iRDoMCcn-wI7f6zXuUrhPtiAB-AnzTkdgAqz4');"></div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Cyber-Punk Oversized Tee</h4>
+<p class="text-sm text-gray-500 mb-2">Size: L • Black</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-gray-900">$45.00</span>
+<button class="text-xs bg-black text-white px-3 py-1.5 rounded font-bold hover:opacity-80 transition-opacity">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200 group cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Neon blue cargo pants" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFNm8jQkikoBGpvz3ByKt5XqSwJEUGfv8v0bAyLSPyNVTpG-U1GQ7X5uS1oh4KQhXr3QQMFjMfBgEkl6X0v8ndPGcw1AwLk4qskaDPC_CzyfUaRoMEBcjbiuAZtpPh_4llS9I8qmCIojkEPDXHme4XYAPuIVQ6fgtm40iH4AcVglpIIUeL8ysrpHRioJAmIqu0Rh7pKuzxqZbDs7TNDZyWPsozkopmVz0aG0Hxdsdx3Ma_BqE__H5933r5rGgFtxYhOnhgwQOnyw4');"></div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Techwear Cargo Pants</h4>
+<p class="text-sm text-gray-500 mb-2">Size: 32 • Navy</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-gray-900">$89.00</span>
+<button class="text-xs bg-black text-white px-3 py-1.5 rounded font-bold hover:opacity-80 transition-opacity">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-white rounded-xl border border-gray-200 p-6 h-full">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-gray-900">Default Address</h2>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2 bg-gray-100 rounded-lg text-gray-600">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div>
+<h4 class="font-bold text-gray-900">Home</h4>
+<p class="text-sm text-gray-500 mt-1 leading-relaxed">
+                                            Alex Doe<br/>
+                                            1248 Electric Ave, Apt 402<br/>
+                                            San Francisco, CA 94103<br/>
+                                            United States
+                                        </p>
+</div>
+</div>
+<div class="h-px bg-gray-100 w-full my-1"></div>
+<div class="flex items-start gap-3">
+<div class="p-2 bg-gray-100 rounded-lg text-gray-600">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<h4 class="font-bold text-gray-900">Phone Number</h4>
+<p class="text-sm text-gray-500 mt-1">+1 (555) 123-4567</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white border border-gray-200 overflow-hidden relative">
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+<div class="p-6 flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+<div class="flex items-center gap-4">
+<div class="p-3 rounded-full bg-white text-primary border border-primary/20 shadow-sm">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 text-lg">Secure Your Account</h3>
+<p class="text-gray-500 text-sm">Enable Two-Factor Authentication for extra safety.</p>
+</div>
+</div>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold text-sm transition-all duration-300 bg-white">
+                            Enable 2FA
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-gray-200 bg-white py-8">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-gray-500">© 2023 CROCKNESTCLUB. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-sm text-gray-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-gray-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-gray-500 hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

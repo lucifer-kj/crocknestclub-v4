@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { MobileNav } from "@/components/layout/MobileNav";
+import { StitchHeader } from "@/components/layout/StitchHeader";
+import { StitchFooter } from "@/components/layout/StitchFooter";
 
-const outfit = Outfit({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-plus-jakarta",
+  display: 'swap',
 });
 
+// Keeping JetBrains for potential mono needs (code blocks or specific stylings)
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -27,15 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${outfit.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col pb-16 md:pb-0`}
+        className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background-light dark:bg-background-dark text-black dark:text-white transition-colors duration-300`}
       >
-        <Header />
+        <StitchHeader />
         <main className="flex-1">
           {children}
         </main>
-        <Footer />
-        <MobileNav />
+        <StitchFooter />
       </body>
     </html>
   );

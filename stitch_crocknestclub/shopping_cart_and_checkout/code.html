@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CrockNestClub - Shopping Cart - Deep Electric Blue</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0033dd",
+                        "primary-dark": "#0022aa",
+                        "background-light": "#f8faff",
+                        "background-dark": "#050814",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#0f1623",
+                        "border-light": "#0033dd",
+                        "border-dark": "#0033dd",
+                        "text-main": "#05080f",
+                        "text-muted": "#546e91",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0033dd; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0022aa; 
+        }.radio-card:has(input:checked) {
+            border-color: #0033dd;
+            background-color: #f2f6ff;
+        }
+        .dark .radio-card:has(input:checked) {
+            background-color: #0f1629;
+            border-color: #0033dd;
+        }
+        .radio-circle {
+            transition: all 0.2s ease;
+        }
+        input:checked + div .radio-circle {
+            border-color: #0033dd;
+            background-color: #0033dd;
+            box-shadow: inset 0 0 0 3px white;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 antialiased overflow-x-hidden transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-6 py-4 lg:px-10">
+<div class="mx-auto flex max-w-[1280px] items-center justify-between">
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">local_mall</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-text-main dark:text-white group-hover:text-primary transition-colors">CROCKNESTCLUB</h2>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-1 text-text-muted dark:text-gray-400 text-sm font-medium">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span>Secure Checkout</span>
+</div>
+<button class="relative rounded-full bg-primary/5 border border-primary/20 p-2 text-primary transition hover:bg-primary hover:text-white dark:bg-white/10 dark:text-white dark:hover:bg-primary dark:hover:text-white">
+<span class="material-symbols-outlined block">shopping_cart</span>
+<span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white border-2 border-background-light dark:border-background-dark">2</span>
+</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen w-full">
+<div class="mx-auto flex max-w-[1280px] flex-col lg:flex-row">
+<div class="flex-1 px-4 py-8 lg:px-10 lg:py-12 lg:border-r border-border-light dark:border-border-dark">
+<div class="mb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<h1 class="text-3xl font-bold tracking-tight text-text-main dark:text-white">Checkout</h1>
+<div class="flex items-center gap-2 text-primary font-medium bg-primary/5 border border-primary/20 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span class="text-sm">Cart reserved for <span class="font-bold">09:42</span></span>
+</div>
+</div>
+<div class="rounded-full bg-border-light/30 dark:bg-primary/20 h-1.5 w-full overflow-hidden">
+<div class="h-full rounded-full bg-primary w-[85%]"></div>
+</div>
+</div>
+<form action="#" class="space-y-10" onsubmit="event.preventDefault();">
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Contact Information</h2>
+<button class="text-sm font-semibold text-primary hover:text-primary-dark" type="button">
+                            Log in
+                        </button>
+</div>
+<div class="grid gap-4">
+<label class="flex flex-col w-full">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Email address</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="you@example.com" type="email"/>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="h-5 w-5 rounded border-primary text-primary focus:ring-primary dark:bg-surface-dark dark:border-primary dark:checked:bg-primary dark:focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-text-main dark:text-gray-300 group-hover:text-primary transition-colors dark:group-hover:text-white">Email me with news and offers</span>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-main dark:text-white mb-4">Shipping Address</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">First name</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="First name" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Last name</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="Last name" type="text"/>
+</label>
+<label class="flex flex-col md:col-span-2">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Address</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="Street address, apartment, suite" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">City</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="City" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Postal Code</span>
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="ZIP / Postal" type="text"/>
+</label>
+<label class="flex flex-col md:col-span-2">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Phone</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-border-light bg-surface-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20 pl-12" placeholder="(555) 555-5555" type="tel"/>
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
+<span class="material-symbols-outlined text-xl">call</span>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted cursor-help" title="Needed for shipping updates">
+<span class="material-symbols-outlined text-lg">help</span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-main dark:text-white mb-4">Shipping Method</h2>
+<div class="flex flex-col gap-3">
+<label class="radio-card relative flex cursor-pointer items-center justify-between rounded-xl border border-border-light bg-surface-light p-4 shadow-sm transition hover:border-primary dark:bg-surface-dark dark:border-border-dark dark:hover:border-primary">
+<div class="flex items-center gap-4">
+<input checked="" class="peer sr-only" name="shipping" type="radio"/>
+<div class="radio-circle h-5 w-5 rounded-full border border-primary/50 dark:border-primary/50"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white">Standard Shipping</span>
+<span class="text-sm text-text-muted">5-7 business days</span>
+</div>
+</div>
+<span class="font-bold text-text-main dark:text-white">Free</span>
+</label>
+<label class="radio-card relative flex cursor-pointer items-center justify-between rounded-xl border border-border-light bg-surface-light p-4 shadow-sm transition hover:border-primary dark:bg-surface-dark dark:border-border-dark dark:hover:border-primary">
+<div class="flex items-center gap-4">
+<input class="peer sr-only" name="shipping" type="radio"/>
+<div class="radio-circle h-5 w-5 rounded-full border border-primary/50 dark:border-primary/50"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white">Express Shipping</span>
+<span class="text-sm text-text-muted">1-2 business days</span>
+</div>
+</div>
+<span class="font-bold text-text-main dark:text-white">$15.00</span>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-xl font-bold text-text-main dark:text-white mb-4">Payment</h2>
+<div class="rounded-xl border border-border-light bg-surface-light overflow-hidden dark:bg-surface-dark dark:border-border-dark">
+<div class="flex border-b border-border-light dark:border-border-dark">
+<button class="flex-1 py-4 text-center font-bold text-primary border-b-2 border-primary bg-primary/5 dark:border-primary dark:bg-primary/10" type="button">
+                                Credit Card
+                            </button>
+<button class="flex-1 py-4 text-center font-medium text-text-muted hover:text-primary transition-colors dark:hover:text-primary" type="button">
+                                PayPal
+                            </button>
+<button class="flex-1 py-4 text-center font-medium text-text-muted hover:text-primary transition-colors dark:hover:text-primary" type="button">
+                                Afterpay
+                            </button>
+</div>
+<div class="p-6 grid gap-4">
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Card Number</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-border-light bg-background-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-background-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20 pl-12" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
+<span class="material-symbols-outlined text-xl">credit_card</span>
+</div>
+</div>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Expiration (MM/YY)</span>
+<input class="w-full rounded-lg border border-border-light bg-background-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-background-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="MM / YY" type="text"/>
+</label>
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Security Code</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-border-light bg-background-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-background-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="CVC" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted cursor-help" title="3 digits on back of card">
+<span class="material-symbols-outlined text-lg">help</span>
+</div>
+</div>
+</label>
+</div>
+<label class="flex flex-col">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">Name on Card</span>
+<input class="w-full rounded-lg border border-border-light bg-background-light px-4 py-3 text-base outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-background-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="Name as shown on card" type="text"/>
+</label>
+</div>
+<div class="bg-background-light dark:bg-background-dark px-6 py-4 border-t border-border-light dark:border-border-dark flex items-center justify-between">
+<div class="flex items-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-2xl">lock</span>
+<span class="text-xs font-medium">Payments are secure and encrypted.</span>
+</div>
+<div class="flex gap-2">
+<div class="h-6 w-10 rounded border border-border-light bg-gray-200 dark:bg-gray-600 dark:border-gray-500"></div>
+<div class="h-6 w-10 rounded border border-border-light bg-gray-200 dark:bg-gray-600 dark:border-gray-500"></div>
+<div class="h-6 w-10 rounded border border-border-light bg-gray-200 dark:bg-gray-600 dark:border-gray-500"></div>
+</div>
+</div>
+</div>
+</section>
+<div class="block lg:hidden pt-4">
+<button class="w-full rounded-xl bg-black py-4 text-lg font-bold text-white shadow-lg shadow-black/20 border border-primary transition hover:bg-gray-800 hover:shadow-black/40 flex items-center justify-center gap-2 dark:bg-white dark:text-black dark:shadow-white/20 dark:hover:bg-gray-200 dark:border-primary">
+<span>Pay $95.00</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<div class="w-full lg:w-[480px] bg-[#f4f8ff] dark:bg-[#0c1221] px-4 py-8 lg:px-10 lg:py-12 lg:min-h-screen">
+<div class="lg:sticky lg:top-32 space-y-8">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Order Summary</h2>
+<div class="space-y-6">
+<div class="flex gap-4 group">
+<div class="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-border-light bg-white dark:bg-surface-dark dark:border-border-dark">
+<img alt="Graphic tee with vibrant abstract design on white background" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" data-alt="Graphic tee with vibrant abstract design on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Od78RBC79BkULEeg0fgJ1whkCp6ydfg7o6Qrsftl3VFYg60gh5akgfqda2KZyGI6AhzJ5Kcc5RvpCy3R_VLzDaXOfrA-BHY0p4UI5bcwNWXp_ohK4jIsFmtTfhEAEyISiamnxrp9bRpoSITkWc6he_aE4xwmpwj-Yz3ULhtuX6zZafaScamJ966maKztKG032W2tnFG1pcHj68xS_SWjYQdo_VpBinhW7YjkrzlXA3s3sin4PFdK1qDYlf4z8-lCYVjkKMdtw7w"/>
+<div class="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-white shadow-md border border-white dark:border-gray-900">1</div>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-text-main dark:text-white">Neon Cyber Tee</h3>
+<p class="font-bold text-text-main dark:text-white">$35.00</p>
+</div>
+<p class="text-sm text-text-muted mt-1">Size: M / Color: Black</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-xs font-medium text-text-muted hover:text-primary underline">Remove</button>
+</div>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-border-light bg-white dark:bg-surface-dark dark:border-border-dark">
+<img alt="Black cargo pants with modern streetwear fit" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" data-alt="Black cargo pants with modern streetwear fit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyTTQiHjjGRd3WKxfAhfQGptLKtDfyJLvkwNl8AVNpXm3eVGwK35Y5lfAiJQZdvmWStJj9i25zPBR7WFJWw1_s7hqj6Ub7hLqc-ia7k2Vl9mRbCznQiG2B-Lu8j3wwTwUjYvd0vMc7ltSHeOcqxAJPeZ4BBfLplQuMbMblTpXvM7rXu0UtUSZlWJCJbJRXPatsWXeLVNYme1lrUHqBf-8kblCiHmat5vnbV6hqQQEzqZvr9mNgqb0GrsMz6ukpFWUB4jJmDRBluZ0"/>
+<div class="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-white shadow-md border border-white dark:border-gray-900">1</div>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-text-main dark:text-white">Tech Utility Cargo</h3>
+<p class="font-bold text-text-main dark:text-white">$60.00</p>
+</div>
+<p class="text-sm text-text-muted mt-1">Size: 32 / Color: Charcoal</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-xs font-medium text-text-muted hover:text-primary underline">Remove</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-3 pt-4 border-t border-border-light dark:border-border-dark">
+<input class="flex-1 rounded-lg border border-border-light bg-white px-4 py-3 text-sm outline-none ring-primary/20 transition focus:border-primary focus:ring-4 dark:bg-surface-dark dark:border-border-dark dark:text-white placeholder:text-text-muted dark:focus:border-primary dark:focus:ring-primary/20" placeholder="Gift card or discount code" type="text"/>
+<button class="rounded-lg bg-primary/10 border border-primary/20 px-6 py-2.5 text-sm font-bold text-primary transition hover:bg-primary hover:text-white dark:bg-primary/20 dark:text-white dark:hover:bg-primary dark:hover:text-white">
+                        Apply
+                    </button>
+</div>
+<div class="space-y-3 pt-6 pb-2">
+<div class="flex justify-between text-sm text-text-main dark:text-gray-300">
+<span>Subtotal</span>
+<span class="font-medium">$95.00</span>
+</div>
+<div class="flex justify-between text-sm text-text-main dark:text-gray-300">
+<span>Shipping</span>
+<span class="text-xs text-text-muted">(Calculated at next step)</span>
+</div>
+<div class="flex justify-between text-sm text-text-main dark:text-gray-300">
+<span>Taxes</span>
+<span class="font-medium">$0.00</span>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-border-light dark:border-border-dark pt-6">
+<span class="text-xl font-bold text-text-main dark:text-white">Total</span>
+<div class="flex items-end gap-2">
+<span class="text-sm text-text-muted mb-1">USD</span>
+<span class="text-2xl font-bold text-primary">$95.00</span>
+</div>
+</div>
+<button class="hidden lg:flex w-full rounded-xl bg-black py-4 text-lg font-bold text-white shadow-lg shadow-black/20 border border-primary transition hover:bg-gray-800 hover:shadow-black/40 items-center justify-center gap-2 hover:-translate-y-1 transform duration-200 dark:bg-white dark:text-black dark:shadow-white/20 dark:hover:bg-gray-200 dark:border-primary">
+<span>Pay $95.00</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-text-muted">
+                    By continuing, you accept our <a class="underline hover:text-primary" href="#">Terms</a> and <a class="underline hover:text-primary" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</div>
+</main>
+</body></html>
