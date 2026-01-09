@@ -1,7 +1,7 @@
 "use server"
 
 import { prisma } from "@/lib/prisma"
-import { CartItem } from "@/store/cart"
+import { CartItem } from "@/store/cart-context"
 import { revalidatePath } from "next/cache"
 
 interface ShippingInfo {

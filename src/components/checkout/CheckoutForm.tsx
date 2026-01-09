@@ -5,11 +5,22 @@ import { useCart } from "@/store/cart-context";
 import { createOrder } from "@/app/checkout/actions";
 import { useRouter } from "next/navigation";
 
-export function CheckoutForm() {
+export function CheckoutForm({ savedAddresses = [] }: { savedAddresses?: any[] }) {
     const { items, cartTotal, clearCart } = useCart();
     const router = useRouter();
     const [isProcessing, setIsProcessing] = useState(false);
-    const [formData, setFormData] = useState({
+    const [selectedAddressId, setSelectedAddressId] = useState<string>(savedAddresses.length > 0 ? savedAddresses[0].id : "new");
+
+    // Initial form data - if addresses exist, prepopulate with the first one
+    const initialData = savedAddresses.length > 0 ? {
+        firstName: savedAddresses[0].user?.name?.split(' ')[0] || "",
+        lastName: savedAddresses[0].user?.name?.split(' ').slice(1).join(' ') || "",
+        email: savedAddresses[0].user?.email || "",
+        address: savedAddresses[0].line1,
+        city: savedAddresses[0].city,
+        zip: savedAddresses[0].postalCode,
+        phone: "" // Phone might not be in address model, so keep empty
+    } : {
         email: "",
         firstName: "",
         lastName: "",
@@ -17,14 +28,35 @@ export function CheckoutForm() {
         city: "",
         zip: "",
         phone: ""
-    });
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.type === "email" ? "email" : e.target.placeholder === "First name" ? "firstName" : e.target.placeholder === "Last name" ? "lastName" : e.target.placeholder === "City" ? "city" : e.target.placeholder === "ZIP / Postal" ? "zip" : e.target.type === "tel" ? "phone" : "address"]: e.target.value });
-        // Note: The placeholder mapping is brittle, normally utilize name attribute.
     };
 
-    // Better handler using name attributes (Updated JSX below to use name attributes)
+    const [formData, setFormData] = useState(initialData);
+
+    const handleAddressSelection = (addressId: string) => {
+        setSelectedAddressId(addressId);
+        if (addressId === "new") {
+            setFormData({
+                email: formData.email, // Keep email
+                firstName: "",
+                lastName: "",
+                address: "",
+                city: "",
+                zip: "",
+                phone: ""
+            });
+        } else {
+            const addr = savedAddresses.find(a => a.id === addressId);
+            if (addr) {
+                setFormData({
+                    ...formData,
+                    address: addr.line1,
+                    city: addr.city,
+                    zip: addr.postalCode,
+                });
+            }
+        }
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -98,6 +130,39 @@ export function CheckoutForm() {
 
                 <section>
                     <h2 className="text-xl font-bold text-text-main dark:text-white mb-4">Shipping Address</h2>
+
+                    {savedAddresses.length > 0 && (
+                        <div className="mb-6 grid gap-3">
+                            {savedAddresses.map((addr) => (
+                                <div
+                                    key={addr.id}
+                                    onClick={() => handleAddressSelection(addr.id)}
+                                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start gap-3 ${selectedAddressId === addr.id ? 'border-primary bg-primary/5' : 'border-gray-200 dark:border-white/10 hover:border-gray-300'}`}
+                                >
+                                    <div className={`mt-1 size-4 rounded-full border flex items-center justify-center ${selectedAddressId === addr.id ? 'border-primary' : 'border-gray-400'}`}>
+                                        {selectedAddressId === addr.id && <div className="size-2 rounded-full bg-primary" />}
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-sm text-black dark:text-white">{addr.user?.name || 'Saved Address'}</p>
+                                        <p className="text-sm text-gray-500">{addr.line1}, {addr.city} {addr.postalCode}</p>
+                                    </div>
+                                </div>
+                            ))}
+                            <div
+                                onClick={() => handleAddressSelection("new")}
+                                className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-3 ${selectedAddressId === "new" ? 'border-primary bg-primary/5' : 'border-gray-200 dark:border-white/10 hover:border-gray-300'}`}
+                            >
+                                <div className={`size-4 rounded-full border flex items-center justify-center ${selectedAddressId === "new" ? 'border-primary' : 'border-gray-400'}`}>
+                                    {selectedAddressId === "new" && <div className="size-2 rounded-full bg-primary" />}
+                                </div>
+                                <span className="font-bold text-sm">Use a new address</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Only show inputs if "new" is selected or to edit (simplified: only if "new" or always show but populated) 
+                        For better UX, let's always show them but they get populated. 
+                    */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <label className="flex flex-col">
                             <span className="text-sm font-medium text-text-main dark:text-gray-300 pb-1.5">First name</span>

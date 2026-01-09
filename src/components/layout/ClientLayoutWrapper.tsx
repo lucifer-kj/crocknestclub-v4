@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { StitchHeader } from "@/components/layout/StitchHeader";
 import { StitchFooter } from "@/components/layout/StitchFooter";
 import { CartProvider } from "@/store/cart-context";
+import { SessionProvider } from "next-auth/react";
 
 export default function ClientLayoutWrapper({
     children,
@@ -16,19 +17,23 @@ export default function ClientLayoutWrapper({
 
     if (isCheckoutFlow) {
         return (
-            <CartProvider>
-                <main className="flex-1">{children}</main>
-            </CartProvider>
+            <SessionProvider>
+                <CartProvider>
+                    <main className="flex-1">{children}</main>
+                </CartProvider>
+            </SessionProvider>
         );
     }
 
     return (
-        <CartProvider>
-            <StitchHeader />
-            <main className="flex-1">
-                {children}
-            </main>
-            <StitchFooter />
-        </CartProvider>
+        <SessionProvider>
+            <CartProvider>
+                <StitchHeader />
+                <main className="flex-1">
+                    {children}
+                </main>
+                <StitchFooter />
+            </CartProvider>
+        </SessionProvider>
     );
 }

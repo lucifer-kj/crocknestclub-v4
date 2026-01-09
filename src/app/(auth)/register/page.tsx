@@ -60,7 +60,7 @@ export default function RegisterPage() {
                         <div className="flex items-start gap-3 mt-2">
                             <input className="mt-1 rounded border-primary text-primary focus:ring-primary bg-transparent" id="newsletter" name="newsletter" type="checkbox" />
                             <label className="text-xs text-gray-500 leading-normal" htmlFor="newsletter">
-                                I agree to the <Link className="text-primary hover:underline" href="#">Terms of Service</Link> and <Link className="text-primary hover:underline" href="#">Privacy Policy</Link>.
+                                I agree to the <Link className="text-primary hover:underline" href="/legal">Terms of Service</Link> and <Link className="text-primary hover:underline" href="/legal">Privacy Policy</Link>.
                             </label>
                         </div>
 

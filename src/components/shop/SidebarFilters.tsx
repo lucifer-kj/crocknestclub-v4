@@ -2,10 +2,12 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
+import { useSession } from "next-auth/react";
 
 export function SidebarFilters() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const { data: session } = useSession();
 
     // Helper to Create Query String
     const createQueryString = useCallback(
@@ -121,9 +123,19 @@ export function SidebarFilters() {
                         style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCY_cy5ip869FOCiQ-s0IxrlJGvpmze2Mg0g21oDr1vOUkuGPhWDFWYt-jXkcCIdWOwr7XKAjTuyVx0iLnfZ0P-ModNqozodpLH9njDgZ8ExGS6jpaQEQta9zPopAOZGykN9RZGLlahL6GGFqvaEZ2W78XdMyBTHiot_eZG61wpbYG5DrfPfe8pCmwkCQ5SBqlzIQuxJXBMM7rrZj56kplN_0K1XZDZwt2pLYuPC_ItPgmyX3PgEROTlLSYXLRa878hYllF9W792Jg")' }}
                     ></div>
                     <div className="relative z-10">
-                        <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Exclusive</p>
-                        <h3 className="text-xl font-black mb-3 leading-tight">Join the<br />Club Now</h3>
-                        <button className="bg-white text-black border border-transparent px-4 py-2 rounded-lg text-sm font-bold w-full hover:bg-gray-200 transition-colors">Sign Up</button>
+                        {session?.user ? (
+                            <>
+                                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">My Account</p>
+                                <h3 className="text-xl font-black mb-3 leading-tight">Elevate Your<br />Status</h3>
+                                <button onClick={() => router.push('/account?upgrade=true')} className="bg-white text-black border border-transparent px-4 py-2 rounded-lg text-sm font-bold w-full hover:bg-gray-200 transition-colors">Upgrade Tier</button>
+                            </>
+                        ) : (
+                            <>
+                                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Exclusive</p>
+                                <h3 className="text-xl font-black mb-3 leading-tight">Join the<br />Club Now</h3>
+                                <button onClick={() => router.push('/register')} className="bg-white text-black border border-transparent px-4 py-2 rounded-lg text-sm font-bold w-full hover:bg-gray-200 transition-colors">Sign Up</button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

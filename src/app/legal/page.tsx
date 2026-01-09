@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function LegalHubPage() {
     return (
         <div className="bg-background-light dark:bg-background-dark text-secondary dark:text-white">
@@ -20,12 +22,12 @@ export default function LegalHubPage() {
                                 Everything you need to know about shopping with CrockNestClub. Clear, concise, and just a click away.
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
-                                <button className="px-6 h-12 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(17,17,212,0.5)]">
+                                <Link href="#policies" className="flex items-center justify-center px-6 h-12 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(17,17,212,0.5)]">
                                     Browse Policies
-                                </button>
-                                <button className="px-6 h-12 rounded-lg border border-white/20 hover:bg-white/10 text-white font-bold transition-colors">
+                                </Link>
+                                <a href="mailto:support@crocknestclub.com" className="flex items-center justify-center px-6 h-12 rounded-lg border border-white/20 hover:bg-white/10 text-white font-bold transition-colors">
                                     Contact Support
-                                </button>
+                                </a>
                             </div>
                         </div>
                         {/* Decorative Graphic Element */}
@@ -46,7 +48,7 @@ export default function LegalHubPage() {
                 </section>
 
                 {/* Feature Section / Policy Directory */}
-                <section className="w-full px-4 py-16 md:py-24 bg-background-light dark:bg-background-dark">
+                <section id="policies" className="w-full px-4 py-16 md:py-24 bg-background-light dark:bg-background-dark">
                     <div className="max-w-[1280px] mx-auto w-full">
                         <div className="flex flex-col gap-4 mb-12 text-center md:text-left">
                             <h2 className="text-secondary dark:text-white text-3xl md:text-4xl font-black tracking-tight">
@@ -63,7 +65,7 @@ export default function LegalHubPage() {
                                 { icon: 'local_shipping', title: 'Shipping & Delivery', text: 'From our nest to your door. Learn about timelines, costs, and tracking info.' },
                                 { icon: 'assignment_return', title: 'Returns & Exchanges', text: 'Not the right fit? Find out how to initiate a return or exchange quickly and easily.' }
                             ].map((policy, index) => (
-                                <a key={index} href="#" className="group relative flex flex-col gap-4 p-6 rounded-xl border border-gray-200 hover:border-primary bg-white dark:bg-white/5 dark:border-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1">
+                                <Link key={index} href="/legal" className="group relative flex flex-col gap-4 p-6 rounded-xl border border-gray-200 hover:border-primary bg-white dark:bg-white/5 dark:border-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-lg bg-gray-50 dark:bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors text-primary">
                                         <span className="material-symbols-outlined text-2xl">{policy.icon}</span>
                                     </div>
@@ -74,7 +76,7 @@ export default function LegalHubPage() {
                                     <div className="mt-auto pt-4 flex items-center text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
                                         Read Policy <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
                                     </div>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>

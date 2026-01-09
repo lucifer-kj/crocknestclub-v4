@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function AboutPage() {
     return (
         <div className="bg-background-light dark:bg-background-dark text-text-main dark:text-white">
@@ -15,12 +17,12 @@ export default function AboutPage() {
                                 </h2>
                             </div>
                             <div className="flex gap-4 mt-4">
-                                <button className="h-12 px-8 bg-black hover:bg-gray-800 text-white rounded-lg font-bold tracking-wide transition-all hover:scale-105 active:scale-95 shadow-[4px_4px_0px_0px_rgba(43,76,255,0.3)]">
+                                <Link href="/shop" className="flex items-center justify-center h-12 px-8 bg-black hover:bg-gray-800 text-white rounded-lg font-bold tracking-wide transition-all hover:scale-105 active:scale-95 shadow-[4px_4px_0px_0px_rgba(43,76,255,0.3)]">
                                     Shop the Drop
-                                </button>
-                                <button className="h-12 px-8 bg-transparent border-2 border-primary text-black dark:text-white hover:bg-black hover:text-white rounded-lg font-bold tracking-wide transition-all">
+                                </Link>
+                                <Link href="#how-it-started" className="flex items-center justify-center h-12 px-8 bg-transparent border-2 border-primary text-black dark:text-white hover:bg-black hover:text-white rounded-lg font-bold tracking-wide transition-all">
                                     Our Story
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="w-full lg:w-1/2">
@@ -41,7 +43,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Values Section */}
-                <section className="px-4 md:px-10 lg:px-40 py-16 bg-white dark:bg-white/5 rounded-3xl mx-4 my-8 shadow-sm">
+                <section id="values" className="px-4 md:px-10 lg:px-40 py-16 bg-white dark:bg-white/5 rounded-3xl mx-4 my-8 shadow-sm">
                     <div className="flex flex-col gap-10">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                             <div className="flex flex-col gap-4 max-w-2xl">
@@ -50,9 +52,9 @@ export default function AboutPage() {
                                 </h2>
                                 <p className="text-text-main/70 dark:text-gray-300 text-lg">What makes CROCKNESTCLUB unique in a sea of sameness.</p>
                             </div>
-                            <a className="text-black dark:text-white font-bold flex items-center gap-1 hover:gap-2 transition-all hover:text-primary" href="#">
+                            <Link className="text-black dark:text-white font-bold flex items-center gap-1 hover:gap-2 transition-all hover:text-primary" href="#values">
                                 Learn more about sustainability <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {[
@@ -75,7 +77,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Timeline Section */}
-                <section className="px-4 md:px-10 lg:px-40 py-16">
+                <section id="how-it-started" className="px-4 md:px-10 lg:px-40 py-16">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl font-black text-text-main dark:text-white mb-3">HOW IT STARTED</h2>

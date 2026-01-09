@@ -76,7 +76,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
 }
 
 // Separate component for async data fetching of related products
-import { ProductCard } from "@/components/shop/ProductCard"
+import { StitchProductCard } from "@/components/shop/StitchProductCard"
 
 async function RelatedProductsSection({ categoryId, currentProductId }: { categoryId: string, currentProductId: string }) {
     const relatedProducts = await prisma.product.findMany({
@@ -92,7 +92,7 @@ async function RelatedProductsSection({ categoryId, currentProductId }: { catego
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map(product => (
-                <ProductCard
+                <StitchProductCard
                     key={product.id}
                     id={product.id}
                     title={product.title}
