@@ -10,6 +10,7 @@ const productSchema = z.object({
     title: z.string().min(1, "Title is required"),
     description: z.string().min(1, "Description is required"),
     basePrice: z.coerce.number().min(0, "Price must be positive"),
+    stock: z.coerce.number().int().min(0, "Stock must be non-negative"),
     scarcityLevel: z.enum(["LOW", "MEDIUM", "HIGH"]),
     categoryId: z.string().min(1, "Category is required"),
     image1: z.string().url("Invalid URL").optional().or(z.literal("")),
@@ -27,6 +28,7 @@ export async function updateProduct(id: string, formData: FormData) {
         title: formData.get("title"),
         description: formData.get("description"),
         basePrice: formData.get("basePrice"),
+        stock: formData.get("stock"),
         scarcityLevel: formData.get("scarcityLevel"),
         categoryId: formData.get("categoryId"),
         image1: formData.get("image1"),
@@ -66,6 +68,7 @@ export async function createProduct(formData: FormData) {
         title: formData.get("title"),
         description: formData.get("description"),
         basePrice: formData.get("basePrice"),
+        stock: formData.get("stock"),
         scarcityLevel: formData.get("scarcityLevel"),
         categoryId: formData.get("categoryId"),
         image1: formData.get("image1"),
@@ -90,8 +93,8 @@ export async function createProduct(formData: FormData) {
             variants: {
                 createMany: {
                     data: [
-                        { size: "M", color: "Default", stock: 10, sku: `${data.title.slice(0, 3).toUpperCase()}-${Date.now()}-M` },
-                        { size: "L", color: "Default", stock: 10, sku: `${data.title.slice(0, 3).toUpperCase()}-${Date.now()}-L` }
+                        { size: "M", color: "Default", stock: Math.floor(data.stock / 2), sku: `${data.title.slice(0, 3).toUpperCase()}-${Date.now()}-M` },
+                        { size: "L", color: "Default", stock: Math.ceil(data.stock / 2), sku: `${data.title.slice(0, 3).toUpperCase()}-${Date.now()}-L` }
                     ]
                 }
             }

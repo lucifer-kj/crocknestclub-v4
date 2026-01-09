@@ -39,8 +39,19 @@ export async function createOrder(items: CartItem[], _clientTotal: number, shipp
                     throw new Error(`Insufficient stock for ${variant.product.title} (${variant.size}/${variant.color})`)
                 }
 
+                // Double Locking: Ensure Product total stock also has availability
+                // This covers the case where Admin updated Product stock but not Variants
+                if (variant.product.stock < item.quantity) {
+                    throw new Error(`Insufficient total stock for ${variant.product.title}`)
+                }
+
                 await tx.variant.update({
                     where: { id: variant.id },
+                    data: { stock: { decrement: item.quantity } }
+                })
+
+                await tx.product.update({
+                    where: { id: variant.product.id },
                     data: { stock: { decrement: item.quantity } }
                 })
 

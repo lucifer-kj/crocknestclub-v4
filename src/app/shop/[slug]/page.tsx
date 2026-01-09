@@ -60,7 +60,48 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
                 />
             </div>
 
+            {/* Related Products */}
+            {product.categoryId && (
+                <div className="mt-24 border-t border-gray-200 dark:border-gray-800 pt-16">
+                    <h2 className="text-2xl font-black uppercase tracking-tight mb-8 text-black dark:text-white">
+                        You Might Also Like
+                    </h2>
+                    <RelatedProductsSection categoryId={product.categoryId} currentProductId={product.id} />
+                </div>
+            )}
+
             <RecentlyViewedList />
         </div>
     );
+}
+
+// Separate component for async data fetching of related products
+import { ProductCard } from "@/components/shop/ProductCard"
+
+async function RelatedProductsSection({ categoryId, currentProductId }: { categoryId: string, currentProductId: string }) {
+    const relatedProducts = await prisma.product.findMany({
+        where: {
+            categoryId,
+            id: { not: currentProductId }
+        },
+        take: 4
+    })
+
+    if (relatedProducts.length === 0) return null
+
+    return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {relatedProducts.map(product => (
+                <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    title={product.title}
+                    price={Number(product.basePrice)}
+                    scarcityLevel={product.scarcityLevel}
+                    image={product.images[0] || ""}
+                    initialStock={product.stock}
+                />
+            ))}
+        </div>
+    )
 }

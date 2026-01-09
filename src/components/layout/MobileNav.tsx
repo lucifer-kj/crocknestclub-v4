@@ -18,9 +18,9 @@ export function MobileNav() {
                     <ShoppingBag className="h-5 w-5" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">Cart</span>
                 </Link>
-                <Link href="/menu" className="flex flex-col items-center justify-center w-full h-full space-y-1 text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/account" className="flex flex-col items-center justify-center w-full h-full space-y-1 text-muted-foreground hover:text-primary transition-colors">
                     <Menu className="h-5 w-5" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Menu</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider">Account</span>
                 </Link>
             </nav>
         </div>

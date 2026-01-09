@@ -85,6 +85,37 @@ export function ProductForm({ categories, product, action }: ProductFormProps) {
                     </div>
                 </div>
 
+                {/* Stock & Scarcity Row */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label htmlFor="stock" className={labelClasses}>Stock Quantity</label>
+                        <input
+                            id="stock"
+                            name="stock"
+                            type="number"
+                            defaultValue={product?.stock ?? 0}
+                            className={inputClasses}
+                            placeholder="0"
+                            min="0"
+                        />
+                        {state.errors?.stock && <p className={errorClasses}>{state.errors.stock[0]}</p>}
+                    </div>
+
+                    <div>
+                        <label htmlFor="scarcityLevel" className={labelClasses}>Scarcity Level</label>
+                        <select
+                            id="scarcityLevel"
+                            name="scarcityLevel"
+                            defaultValue={product?.scarcityLevel || "MEDIUM"}
+                            className={inputClasses}
+                        >
+                            <option value="LOW">Low (Common)</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="HIGH">High (Rare)</option>
+                        </select>
+                    </div>
+                </div>
+
                 {/* Category */}
                 <div>
                     <label htmlFor="categoryId" className={labelClasses}>Category</label>

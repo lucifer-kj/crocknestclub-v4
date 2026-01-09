@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function StitchHero() {
     return (
         <section className="w-full px-4 py-8 sm:px-6 lg:px-8 bg-white dark:from-background-dark dark:to-background-dark">
@@ -16,12 +18,12 @@ export function StitchHero() {
                             </p>
                         </div>
                         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-                            <button className="inline-flex h-12 items-center justify-center rounded-lg bg-black px-8 text-sm font-bold text-white transition-transform hover:scale-105 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">
+                            <Link href="/shop?category=men" className="inline-flex h-12 items-center justify-center rounded-lg bg-black px-8 text-sm font-bold text-white transition-transform hover:scale-105 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">
                                 Shop Men
-                            </button>
-                            <button className="inline-flex h-12 items-center justify-center rounded-lg border border-primary bg-transparent px-8 text-sm font-bold text-text-main dark:text-white hover:bg-primary/5 transition-colors">
+                            </Link>
+                            <Link href="/shop?category=women" className="inline-flex h-12 items-center justify-center rounded-lg border border-primary bg-transparent px-8 text-sm font-bold text-text-main dark:text-white hover:bg-primary/5 transition-colors">
                                 Shop Women
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="order-1 lg:order-2">

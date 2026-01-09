@@ -26,6 +26,23 @@ enum ScarcityLevel {
   HIGH
 }
 
+enum ReturnStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REFUNDED
+}
+
+model ReturnRequest {
+  id        String       @id @default(uuid())
+  orderId   String       
+  order     Order        @relation(fields: [orderId], references: [id])
+  reason    String
+  status    ReturnStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
 model User {
   id            String    @id @default(uuid())
   email         String    @unique
@@ -111,6 +128,7 @@ model Product {
   title         String
   description   String
   basePrice     Decimal
+  stock         Int           @default(0)
   scarcityLevel ScarcityLevel @default(MEDIUM)
   images        String[]
   createdAt     DateTime      @default(now())
@@ -178,6 +196,7 @@ model Order {
   shippingAddress   Address?  @relation(fields: [shippingAddressId], references: [id])
 
   items           OrderItem[]
+  returns         ReturnRequest[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 }

@@ -31,6 +31,7 @@ function SearchInput() {
 }
 
 export function StitchHeader() {
+    const router = useRouter();
     return (
         <header className="sticky top-0 z-50 w-full border-b border-primary/30 bg-surface-light/80 dark:bg-background-dark/80 backdrop-blur-md">
             <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -56,7 +57,10 @@ export function StitchHeader() {
                     </Suspense>
 
                     <div className="flex gap-2">
-                        <button className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors md:hidden">
+                        <button
+                            onClick={() => router.push('/search')}
+                            className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors md:hidden"
+                        >
                             <span className="material-symbols-outlined text-[24px]">search</span>
                         </button>
                         <Link href="/account" className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">

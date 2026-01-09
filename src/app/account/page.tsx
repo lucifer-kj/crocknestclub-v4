@@ -1,6 +1,29 @@
+"use client";
+
 import Link from 'next/link';
+import { useCart } from '@/store/cart-context';
 
 export default function AccountDashboardPage() {
+    const { addToCart } = useCart();
+
+    const handleFeatureNotAvailable = () => {
+        alert("This feature is coming soon!");
+    };
+
+    const handleAddToCart = () => {
+        addToCart({
+            productId: "cyber-punk-tee", // Mock ID matching the static item
+            variantId: "cyber-punk-tee-l-black",
+            title: "Cyber-Punk Oversized Tee",
+            price: 45.00,
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCH4SgtNzViB_zFqBCuLUh0mEKL6jTM9M8yg6m4cayb9OVGEaDuYPMuwdyruViBCCc6FGn0rSgUmru1dTL1vWLVd1xXhOjEJLZGqv7D0gZHUD0RgIyc_Xvqzav8vFOGL3nJYqoNQcxmaaHeuIOC9Kcxc2Y-ltUm9LIjWD8Pu3N5OJkfhro83JSHC3i_gU9cGYVrbD3G36QNxGeDM_qpBTMewA0dXIW8hDuHJnJ2h0iRDoMCcn-wI7f6zXuUrhPtiAB-AnzTkdgAqz4",
+            size: "L",
+            color: "#000000",
+            quantity: 1
+        });
+        alert("Added to Cart!");
+    };
+
     return (
         <div className="space-y-6">
             {/* Welcome Banner */}
@@ -12,11 +35,11 @@ export default function AccountDashboardPage() {
                     <h1 className="text-3xl font-extrabold text-black dark:text-white mb-2">Welcome back, Alex! ⚡️</h1>
                     <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-lg">You're rocking the Gold Tier. You've earned <span className="text-primary font-bold">1,250 points</span> which can be redeemed for a $50 coupon.</p>
                     <div className="flex flex-wrap gap-3">
-                        <button className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+                        <button onClick={handleFeatureNotAvailable} className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
                             View Rewards
                             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                         </button>
-                        <button className="bg-white dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/20 text-black dark:text-white border border-gray-200 dark:border-white/10 px-5 py-2.5 rounded-lg font-bold text-sm transition-all">
+                        <button onClick={handleFeatureNotAvailable} className="bg-white dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/20 text-black dark:text-white border border-gray-200 dark:border-white/10 px-5 py-2.5 rounded-lg font-bold text-sm transition-all">
                             Edit Profile
                         </button>
                     </div>
@@ -141,7 +164,7 @@ export default function AccountDashboardPage() {
                                 <p className="text-sm text-gray-500 mb-2">Size: L • Black</p>
                                 <div className="flex items-center justify-between">
                                     <span className="font-bold text-black dark:text-white">$45.00</span>
-                                    <button className="text-xs bg-black dark:bg-white text-white dark:text-black px-3 py-1.5 rounded font-bold hover:opacity-80 transition-opacity">Add to Cart</button>
+                                    <button onClick={handleAddToCart} className="text-xs bg-black dark:bg-white text-white dark:text-black px-3 py-1.5 rounded font-bold hover:opacity-80 transition-opacity">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +176,7 @@ export default function AccountDashboardPage() {
                     <div className="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-white/10 p-6 h-full">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-lg font-bold text-black dark:text-white">Default Address</h2>
-                            <button className="p-2 text-gray-400 hover:text-primary transition-colors">
+                            <button onClick={handleFeatureNotAvailable} className="p-2 text-gray-400 hover:text-primary transition-colors">
                                 <span className="material-symbols-outlined text-[20px]">edit</span>
                             </button>
                         </div>
@@ -190,7 +213,7 @@ export default function AccountDashboardPage() {
                             <p className="text-gray-500 text-sm">Enable Two-Factor Authentication for extra safety.</p>
                         </div>
                     </div>
-                    <button className="whitespace-nowrap px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold text-sm transition-all duration-300 bg-white dark:bg-transparent">
+                    <button onClick={handleFeatureNotAvailable} className="whitespace-nowrap px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold text-sm transition-all duration-300 bg-white dark:bg-transparent">
                         Enable 2FA
                     </button>
                 </div>

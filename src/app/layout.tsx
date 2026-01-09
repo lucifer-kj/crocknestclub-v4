@@ -18,8 +18,34 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CROCKNESTCLUB",
-  description: "Official CROCKNESTCLUB Merch Store.",
+  title: {
+    default: "LOUD MERCH | Premium Streetwear",
+    template: "%s | LOUD MERCH"
+  },
+  description: "Exclusive drops. Premium quality. The loudest merch in the game.",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://loudmerch.com',
+    siteName: 'LOUD MERCH',
+    title: 'LOUD MERCH | Premium Streetwear',
+    description: 'Exclusive drops. Premium quality. The loudest merch in the game.',
+    images: [
+      {
+        url: '/og-image.jpg', // We should ensure this exists or use a placeholder
+        width: 1200,
+        height: 630,
+        alt: 'LOUD MERCH Collection',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LOUD MERCH | Premium Streetwear',
+    description: 'Exclusive drops. Premium quality. The loudest merch in the game.',
+    creator: '@loudmerch',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({

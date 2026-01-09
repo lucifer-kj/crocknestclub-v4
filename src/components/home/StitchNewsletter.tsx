@@ -1,3 +1,5 @@
+"use client";
+
 export function StitchNewsletter() {
     return (
         <section className="w-full bg-gradient-to-br from-black via-[#002db3] to-black py-16 text-white relative overflow-hidden">
@@ -9,14 +11,14 @@ export function StitchNewsletter() {
                 <p className="mx-auto mb-8 max-w-2xl text-lg font-medium text-white/90">
                     Get early access to drops, exclusive discounts, and be the first to know about our pop-up events.
                 </p>
-                <form className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
+                <form onSubmit={(e) => { e.preventDefault(); alert("Thanks for subscribing!"); (e.target as HTMLFormElement).reset(); }} className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
                     <input
                         className="flex-1 rounded-lg border border-primary bg-white/10 px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-primary outline-none"
                         placeholder="Enter your email"
                         required
                         type="email"
                     />
-                    <button className="rounded-lg bg-white px-6 py-3 font-bold text-black transition-transform hover:scale-105" type="button">
+                    <button className="rounded-lg bg-white px-6 py-3 font-bold text-black transition-transform hover:scale-105" type="submit">
                         Subscribe
                     </button>
                 </form>

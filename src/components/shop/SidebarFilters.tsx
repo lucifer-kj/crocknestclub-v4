@@ -1,10 +1,55 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+
 export function SidebarFilters() {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    // Helper to Create Query String
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+            const params = new URLSearchParams(searchParams.toString());
+
+            // Toggle logic for multi-select could go here, but starting with single select for replace
+            // For simple implementation: if value is already selected, remove it. Else set it.
+            // But for Sidebar, let's assume we want to set it.
+
+            // If we want multi-select (e.g. sizes), we handle arrays.
+            // For now, let's stick to simple "set" for category to match typical navigation.
+
+            if (params.get(name) === value) {
+                params.delete(name);
+            } else {
+                params.set(name, value);
+            }
+
+            return params.toString();
+        },
+        [searchParams]
+    );
+
+    const handleFilterChange = (type: string, value: string) => {
+        const newQuery = createQueryString(type, value);
+        router.push(`/shop?${newQuery}`);
+    };
+
+    const currentCategory = searchParams.get('category');
+    const currentSize = searchParams.get('size');
+    const currentColor = searchParams.get('color');
+
     return (
         <aside className="w-full lg:w-64 flex-shrink-0 space-y-8">
             <div className="sticky top-24 space-y-6">
                 <div className="flex items-center justify-between lg:hidden pb-4 border-b border-primary/30">
                     <span className="font-bold text-lg text-black dark:text-white">Filters</span>
-                    <button className="text-primary font-medium text-sm">Reset All</button>
+                    <button
+                        onClick={() => router.push('/shop')}
+                        className="text-primary font-medium text-sm"
+                    >
+                        Reset All
+                    </button>
                 </div>
 
                 <div className="space-y-4">
@@ -14,10 +59,17 @@ export function SidebarFilters() {
                             <span className="material-symbols-outlined transition-transform group-open:rotate-180 text-primary">expand_more</span>
                         </summary>
                         <div className="pt-2 space-y-2">
-                            {['T-Shirts', 'Hoodies', 'Jackets', 'Accessories', 'Bottoms'].map((cat) => (
+                            {['men', 'women', 'accessories', 'streetwear', 'tops', 'bottoms'].map((cat) => (
                                 <label key={cat} className="flex items-center gap-3 cursor-pointer group/item">
-                                    <input className="size-4 rounded border-primary text-black focus:ring-primary focus:ring-opacity-40 bg-gray-50" type="checkbox" />
-                                    <span className="text-gray-600 dark:text-gray-400 group-hover/item:text-black dark:group-hover/item:text-white transition-colors font-medium">{cat}</span>
+                                    <input
+                                        className="size-4 rounded border-primary text-black focus:ring-primary focus:ring-opacity-40 bg-gray-50"
+                                        type="checkbox"
+                                        checked={currentCategory === cat}
+                                        onChange={() => handleFilterChange('category', cat)}
+                                    />
+                                    <span className={`group-hover/item:text-black dark:group-hover/item:text-white transition-colors font-medium capitalize ${currentCategory === cat ? 'text-primary font-bold' : 'text-gray-600 dark:text-gray-400'}`}>
+                                        {cat}
+                                    </span>
                                 </label>
                             ))}
                         </div>
@@ -30,7 +82,15 @@ export function SidebarFilters() {
                         </summary>
                         <div className="pt-3 flex flex-wrap gap-2">
                             {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
-                                <button key={size} className="h-10 w-10 flex items-center justify-center rounded-lg border border-primary/50 hover:border-black hover:bg-black hover:text-white transition-all text-sm font-bold bg-white dark:bg-white/5 text-black dark:text-white">
+                                <button
+                                    key={size}
+                                    onClick={() => handleFilterChange('size', size)}
+                                    className={`h-10 w-10 flex items-center justify-center rounded-lg border transition-all text-sm font-bold 
+                                        ${currentSize === size
+                                            ? 'border-black bg-black text-white dark:border-primary dark:bg-primary'
+                                            : 'border-primary/50 hover:border-black hover:bg-black hover:text-white bg-white dark:bg-white/5 text-black dark:text-white'
+                                        }`}
+                                >
                                     {size}
                                 </button>
                             ))}
@@ -44,7 +104,12 @@ export function SidebarFilters() {
                         </summary>
                         <div className="pt-3 flex flex-wrap gap-3">
                             {['#000000', '#ffffff', '#0040ff', '#ef4444', '#22c55e'].map((color) => (
-                                <button key={color} className="size-6 rounded-full border border-gray-200 shadow-sm hover:ring-2 hover:ring-offset-2 hover:ring-primary" style={{ backgroundColor: color }}></button>
+                                <button
+                                    key={color}
+                                    onClick={() => handleFilterChange('color', color)}
+                                    className={`size-6 rounded-full border shadow-sm hover:ring-2 hover:ring-offset-2 hover:ring-primary ${currentColor === color ? 'ring-2 ring-offset-2 ring-primary' : 'border-gray-200'}`}
+                                    style={{ backgroundColor: color }}
+                                ></button>
                             ))}
                         </div>
                     </details>
