@@ -23,6 +23,15 @@ export const metadata: Metadata = {
     template: "%s | LOUD MERCH"
   },
   description: "Exclusive drops. Premium quality. The loudest merch in the game.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "CrockNest Club",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -46,6 +55,10 @@ export const metadata: Metadata = {
     creator: '@loudmerch',
     images: ['/og-image.jpg'],
   },
+};
+
+export const viewport = {
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
